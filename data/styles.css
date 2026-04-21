@@ -1,5 +1,5 @@
 ﻿.ax_default {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:13px;
@@ -70,7 +70,7 @@
   text-align:left;
 }
 .checkbox {
-  font-family:"微软雅黑 Light", "微软雅黑", sans-serif;
+  font-family:'微软雅黑 Light', '微软雅黑', '微软雅黑', sans-serif;
   font-weight:250;
   font-style:normal;
   text-align:left;
@@ -79,7 +79,7 @@
   text-align:left;
 }
 .table_cell {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:14px;
@@ -109,7 +109,7 @@
   text-align:left;
 }
 ._形状1 {
-  font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
   font-weight:700;
   font-style:normal;
   font-size:20px;
@@ -118,7 +118,7 @@
 .line {
 }
 .heading_1 {
-  font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
   font-weight:700;
   font-style:normal;
   font-size:32px;
@@ -141,7 +141,7 @@
   color:#000000;
 }
 .heading_3 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:18px;
@@ -153,41 +153,41 @@
   text-align:left;
 }
 ._一级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:32px;
   text-align:left;
 }
 ._二级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:24px;
   text-align:left;
 }
 ._三级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:18px;
   text-align:left;
 }
 ._四级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:14px;
   text-align:left;
 }
 ._五级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   text-align:left;
 }
 ._六级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:10px;
@@ -209,7 +209,7 @@
   font-style:normal;
 }
 .label1 {
-  font-family:"微软雅黑 Light", "微软雅黑", sans-serif;
+  font-family:'微软雅黑 Light', '微软雅黑', '微软雅黑', sans-serif;
   font-weight:250;
   font-style:normal;
   font-size:13px;
@@ -267,7 +267,7 @@
 .box_12 {
 }
 ._自定义_三级菜单 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:normal;
   font-style:normal;
   font-size:16px;
@@ -275,7 +275,7 @@
   text-align:left;
 }
 ._自定义_一级菜单 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:18px;
@@ -337,7 +337,7 @@
   color:#333E50;
 }
 ._自定义_标题栏1 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:normal;
   font-style:normal;
   font-size:18px;
@@ -422,7 +422,7 @@
 ._默认样式1 {
 }
 .title3 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:18px;
@@ -503,7 +503,7 @@
   font-style:normal;
 }
 ._形状5 {
-  font-family:"微软雅黑 Bold", "微软雅黑", sans-serif;
+  font-family:'微软雅黑 Bold', '微软雅黑', '微软雅黑', sans-serif;
   font-weight:700;
   font-style:normal;
   font-size:16px;
@@ -547,7 +547,7 @@
   text-align:left;
 }
 ._形状6 {
-  font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
   font-weight:700;
   font-style:normal;
   color:#FF0066;
