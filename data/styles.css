@@ -25,13 +25,13 @@
 .image {
 }
 .button {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#FFFFFF;
 }
 .primary_button {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#FFFFFF;
@@ -48,7 +48,7 @@
 ._链接按下1 {
 }
 .text_field {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#000000;
@@ -59,7 +59,7 @@
   text-align:left;
 }
 .droplist {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#000000;
@@ -223,12 +223,12 @@
 ._图片_ {
 }
 .box_21 {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
 }
 ._列表工具区域背景 {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
 }
@@ -239,7 +239,7 @@
   color:#FF0066;
 }
 .flow_shape {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#027DB4;
@@ -517,7 +517,7 @@
   text-align:left;
 }
 .font_awesome_5_pro_solid {
-  font-family:'Font Awesome 5 Pro Solid', 'Font Awesome 5 Pro', 'Font Awesome 5 Pro', sans-serif;
+  font-family:'Font Awesome 5 Pro Solid', 'Font Awesome 5 Pro', sans-serif;
   font-weight:900;
   font-style:normal;
   font-size:28px;
