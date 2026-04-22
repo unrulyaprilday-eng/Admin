@@ -3,8 +3,8 @@
   <defs>
     <pattern id="BGPattern" patternUnits="userSpaceOnUse" alignment="0 0" imageRepeat="None" />
   </defs>
-  <g transform="matrix(1 0 0 1 -299 -472.5 )">
-    <path d="M 0 0  L 16 0  L 16 16  L 0 16  L 0 0  Z " fill-rule="nonzero" fill="rgba(240, 240, 240, 1)" stroke="none" transform="matrix(1 0 0 1 299 472.5 )" class="fill" />
-    <path d="M 0.5 0.5  L 15.5 0.5  L 15.5 15.5  L 0.5 15.5  L 0.5 0.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(127, 127, 127, 1)" fill="none" transform="matrix(1 0 0 1 299 472.5 )" class="stroke" stroke-dashoffset="0.5" />
+  <g transform="matrix(1 0 0 1 -369 -620.5 )">
+    <path d="M 0 0  L 16 0  L 16 16  L 0 16  L 0 0  Z " fill-rule="nonzero" fill="rgba(240, 240, 240, 1)" stroke="none" transform="matrix(1 0 0 1 369 620.5 )" class="fill" />
+    <path d="M 0.5 0.5  L 15.5 0.5  L 15.5 15.5  L 0.5 15.5  L 0.5 0.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(127, 127, 127, 1)" fill="none" transform="matrix(1 0 0 1 369 620.5 )" class="stroke" stroke-dashoffset="0.5" />
   </g>
 </svg>
