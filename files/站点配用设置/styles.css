@@ -2659,6 +2659,10 @@
   overflow-y:hidden;
   background-color:rgba(242, 242, 242, 1);
   background-image:none;
+  box-sizing:border-box;
+  border-width:1px;
+  border-style:solid;
+  border-color:rgba(121, 121, 121, 1);
   border-radius:0px;
   -moz-box-shadow:none;
   -webkit-box-shadow:none;
@@ -2671,6 +2675,10 @@
   top:0px;
   width:1px;
   height:1px;
+}
+#u58_state0_content {
+  left:-1px;
+  top:-1px;
 }
 #u59_div {
   border-width:0px;
