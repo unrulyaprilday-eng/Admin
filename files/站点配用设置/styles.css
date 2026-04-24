@@ -2657,7 +2657,7 @@
   overflow-x:hidden;
   -ms-overflow-y:hidden;
   overflow-y:hidden;
-  background-color:rgba(242, 242, 242, 1);
+  background-color:rgba(255, 255, 255, 1);
   background-image:none;
   box-sizing:border-box;
   border-width:1px;
@@ -2688,7 +2688,7 @@
   width:334px;
   height:198px;
   background:inherit;
-  background-color:rgba(255, 255, 255, 1);
+  background-color:rgba(242, 242, 242, 1);
   border-radius:0px;
   filter:drop-shadow(none);
   transition:none;
@@ -2800,7 +2800,7 @@
   position:absolute;
   left:0px;
   top:0px;
-  width:94px;
+  width:86px;
   height:15px;
   background:inherit;
   background-color:rgba(255, 255, 255, 0);
@@ -2813,7 +2813,7 @@
   position:absolute;
   left:179px;
   top:39px;
-  width:94px;
+  width:86px;
   height:15px;
   display:flex;
   transition:none;
