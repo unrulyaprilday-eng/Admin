@@ -25,6 +25,10 @@
 .image {
 }
 .button {
+}
+.line {
+}
+.button1 {
   font-family:"微软雅黑", sans-serif;
   font-weight:400;
   font-style:normal;
@@ -115,7 +119,7 @@
   font-size:20px;
   color:#4EDB7C;
 }
-.line {
+.line1 {
 }
 .heading_1 {
   font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
@@ -149,7 +153,17 @@
 }
 .icon {
 }
+.link_button1 {
+  color:#169BD5;
+}
 .paragraph1 {
+  text-align:left;
+}
+.heading_11 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  font-size:32px;
   text-align:left;
 }
 ._一级标题 {
@@ -247,6 +261,13 @@
 .placeholder {
 }
 .shape1 {
+}
+.heading_2 {
+  font-family:"Arial Normal", "Arial", sans-serif;
+  font-weight:bold;
+  font-style:normal;
+  font-size:24px;
+  text-align:left;
 }
 .form_hint1 {
   color:#999999;
@@ -482,7 +503,7 @@
 }
 .box_22 {
 }
-.line1 {
+.line2 {
 }
 .label2 {
   font-size:14px;
@@ -517,7 +538,7 @@
   text-align:left;
 }
 .font_awesome_5_pro_solid {
-  font-family:'Font Awesome 5 Pro Solid', 'Font Awesome 5 Pro', sans-serif;
+  font-family:'Font Awesome 5 Pro Solid', 'Font Awesome 5 Pro', 'Font Awesome 5 Pro', sans-serif;
   font-weight:900;
   font-style:normal;
   font-size:28px;
@@ -560,7 +581,7 @@
 }
 ._默认样式3 {
 }
-.line2 {
+.line3 {
 }
 .box_23 {
 }
@@ -570,6 +591,6 @@
   font-size:14px;
   text-align:left;
 }
-.line3 {
+.line4 {
 }
 textarea, select, input, button, div, svg { outline: none; }
