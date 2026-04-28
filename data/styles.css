@@ -1,5 +1,5 @@
 ﻿.ax_default {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:13px;
@@ -24,18 +24,26 @@
 }
 .image {
 }
+.el-button {
+  font-family:'Arial Normal', 'Arial', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#606266;
+  text-align:center;
+}
 .button {
 }
 .line {
 }
 .button1 {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#FFFFFF;
 }
 .primary_button {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#FFFFFF;
@@ -52,7 +60,7 @@
 ._链接按下1 {
 }
 .text_field {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#000000;
@@ -63,7 +71,7 @@
   text-align:left;
 }
 .droplist {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#000000;
@@ -74,7 +82,7 @@
   text-align:left;
 }
 .checkbox {
-  font-family:"微软雅黑 Light", "微软雅黑", sans-serif;
+  font-family:'微软雅黑 Light', '微软雅黑', '微软雅黑', sans-serif;
   font-weight:250;
   font-style:normal;
   text-align:left;
@@ -83,12 +91,20 @@
   text-align:left;
 }
 .table_cell {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:14px;
   color:#555555;
   text-align:center;
+}
+.label {
+  font-family:'Arial Normal', 'Arial', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#606266;
+  text-align:left;
 }
 .menu_item {
 }
@@ -101,9 +117,11 @@
 }
 .box_1 {
 }
-.label {
+.label1 {
   font-size:14px;
   text-align:left;
+}
+.horizontal_line {
 }
 .text_area1 {
   color:#000000;
@@ -113,7 +131,7 @@
   text-align:left;
 }
 ._形状1 {
-  font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
   font-weight:700;
   font-style:normal;
   font-size:20px;
@@ -122,13 +140,16 @@
 .line1 {
 }
 .heading_1 {
-  font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
   font-weight:700;
   font-style:normal;
   font-size:32px;
   text-align:left;
 }
 .ellipse {
+}
+.text_link {
+  color:#0000FF;
 }
 .box_2 {
 }
@@ -144,8 +165,15 @@
 .image1 {
   color:#000000;
 }
+.iconfont {
+  font-family:"iconfont", sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:18px;
+  color:#666666;
+}
 .heading_3 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:18px;
@@ -160,48 +188,48 @@
   text-align:left;
 }
 .heading_11 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:32px;
   text-align:left;
 }
 ._一级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:32px;
   text-align:left;
 }
 ._二级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:24px;
   text-align:left;
 }
 ._三级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:18px;
   text-align:left;
 }
 ._四级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:14px;
   text-align:left;
 }
 ._五级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   text-align:left;
 }
 ._六级标题 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:10px;
@@ -222,8 +250,8 @@
   font-weight:400;
   font-style:normal;
 }
-.label1 {
-  font-family:"微软雅黑 Light", "微软雅黑", sans-serif;
+.label2 {
+  font-family:'微软雅黑 Light', '微软雅黑', '微软雅黑', sans-serif;
   font-weight:250;
   font-style:normal;
   font-size:13px;
@@ -237,12 +265,12 @@
 ._图片_ {
 }
 .box_21 {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
 }
 ._列表工具区域背景 {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
 }
@@ -253,7 +281,7 @@
   color:#FF0066;
 }
 .flow_shape {
-  font-family:"微软雅黑", sans-serif;
+  font-family:'微软雅黑', sans-serif;
   font-weight:400;
   font-style:normal;
   color:#027DB4;
@@ -263,7 +291,7 @@
 .shape1 {
 }
 .heading_2 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:bold;
   font-style:normal;
   font-size:24px;
@@ -277,8 +305,138 @@
 .primary_button1 {
   color:#FFFFFF;
 }
+.text_link_mouse_over {
+}
+.text_link_mouse_down {
+}
+.refs-chart-data {
+  font-family:'Arial Normal', 'Arial', sans-serif;
+  font-weight:400;
+  font-style:normal;
+}
+.el-button-primary {
+  font-family:'Arial Normal', 'Arial', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#FFFFFF;
+  text-align:center;
+}
+.el-button-primary-plain {
+  font-family:'Arial Normal', 'Arial', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#409EFF;
+  text-align:center;
+}
+.el-button-m {
+  font-family:'Arial Normal', 'Arial', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#606266;
+  text-align:center;
+}
+.radio-check {
+}
+.radio-uncheck {
+  color:#333333;
+}
+.radio-label-check {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#409EFF;
+  text-align:left;
+}
+.radio-label-uncheck {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#6B6B6B;
+  text-align:left;
+}
+.checkbox-check {
+}
+.checkbox-label-check {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#409EFF;
+  text-align:left;
+}
+.checkbox-uncheck {
+}
+.checkbox-label-uncheck {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#606266;
+  text-align:left;
+}
+.input-placeholder {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#C0C4CC;
+  text-align:left;
+}
+.input-textarea {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#C0C4CC;
+  text-align:left;
+}
+.tag {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#409EFF;
+  text-align:center;
+}
+.tag-success {
+  font-family:'Arial Normal', 'Arial', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#67C23A;
+  text-align:center;
+}
+.tag-warning {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#E6A23C;
+  text-align:center;
+}
+.tag-info {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#606266;
+  text-align:center;
+}
+.tag-danger {
+  font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#F56C6C;
+  text-align:center;
+}
 .basicbutton-embossed {
-  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-family:'Roboto Medium', 'Roboto', 'Roboto', sans-serif;
   font-weight:500;
   font-style:normal;
   font-size:16px;
@@ -288,7 +446,7 @@
 .box_12 {
 }
 ._自定义_三级菜单 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:normal;
   font-style:normal;
   font-size:16px;
@@ -296,7 +454,7 @@
   text-align:left;
 }
 ._自定义_一级菜单 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:18px;
@@ -307,7 +465,7 @@
   color:#333333;
 }
 .primary-button {
-  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-family:'Roboto Medium', 'Roboto', 'Roboto', sans-serif;
   font-weight:500;
   font-style:normal;
   font-size:16px;
@@ -358,7 +516,7 @@
   color:#333E50;
 }
 ._自定义_标题栏1 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:normal;
   font-style:normal;
   font-size:18px;
@@ -409,7 +567,7 @@
 ._表格 {
 }
 .basicbutton {
-  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-family:'Roboto Medium', 'Roboto', 'Roboto', sans-serif;
   font-weight:500;
   font-style:normal;
   font-size:16px;
@@ -419,7 +577,7 @@
 ._形状4 {
 }
 .basicbutton-outline {
-  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-family:'Roboto Medium', 'Roboto', 'Roboto', sans-serif;
   font-weight:500;
   font-style:normal;
   font-size:16px;
@@ -443,7 +601,7 @@
 ._默认样式1 {
 }
 .title3 {
-  font-family:"Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Normal', 'Arial', sans-serif;
   font-weight:400;
   font-style:normal;
   font-size:18px;
@@ -451,7 +609,7 @@
   text-align:left;
 }
 .basictextlabel {
-  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-family:'Roboto Medium', 'Roboto', 'Roboto', sans-serif;
   font-weight:500;
   font-style:normal;
   font-size:13px;
@@ -467,7 +625,7 @@
   text-align:left;
 }
 .grouped-buttons {
-  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-family:'Roboto Medium', 'Roboto', 'Roboto', sans-serif;
   font-weight:500;
   font-style:normal;
   font-size:16px;
@@ -479,7 +637,7 @@
   text-align:left;
 }
 .basicbutton1 {
-  font-family:"Roboto Medium", "Roboto", sans-serif;
+  font-family:'Roboto Medium', 'Roboto', 'Roboto', sans-serif;
   font-weight:500;
   font-style:normal;
   font-size:16px;
@@ -492,20 +650,13 @@
 }
 .shape2 {
 }
-.iconfont {
-  font-family:"iconfont", sans-serif;
-  font-weight:400;
-  font-style:normal;
-  font-size:18px;
-  color:#666666;
-}
 .box_13 {
 }
 .box_22 {
 }
 .line2 {
 }
-.label2 {
+.label3 {
   font-size:14px;
   text-align:left;
 }
@@ -524,7 +675,7 @@
   font-style:normal;
 }
 ._形状5 {
-  font-family:"微软雅黑 Bold", "微软雅黑", sans-serif;
+  font-family:'微软雅黑 Bold', '微软雅黑', '微软雅黑', sans-serif;
   font-weight:700;
   font-style:normal;
   font-size:16px;
@@ -549,7 +700,7 @@
 ._文本链接2 {
   color:#409EFF;
 }
-.text_link_mouse_over {
+.text_link_mouse_over1 {
   color:#FF6364;
 }
 ._鼠标悬停文本链接时 {
@@ -568,7 +719,7 @@
   text-align:left;
 }
 ._形状6 {
-  font-family:"Arial Negreta", "Arial Normal", "Arial", sans-serif;
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
   font-weight:700;
   font-style:normal;
   color:#FF0066;
@@ -587,7 +738,7 @@
 }
 .box_24 {
 }
-.label3 {
+.label4 {
   font-size:14px;
   text-align:left;
 }
