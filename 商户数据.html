@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>商户数据</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/merchant-data-center.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/商户数据/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="merchant_data">
+    <div id="base">
+      <main class="page-shell">
+        <header class="page-header">
+          <div class="title-group">
+            <h1>商户数据</h1>
+            <p class="page-desc">说明：按日统计商户经营数据，顶部仅汇总 A 端最常看的活跃、入款、投注与客损指标。</p>
+          </div>
+          <nav class="header-tabs">
+            <a class="active" href="商户数据.html">商户数据</a>
+            <a href="商户数据汇总.html">商户数据汇总</a>
+          </nav>
+        </header>
+
+        <section class="metric-grid" aria-label="核心指标">
+          <div class="metric-card">
+            <div class="metric-label"><span>活跃商户</span><span>当前筛选</span></div>
+            <div class="metric-value" id="metricMerchant">0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>活跃会员</span><span>日活口径</span></div>
+            <div class="metric-value" id="metricActiveMembers">0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>用户充值</span><span>日统计</span></div>
+            <div class="metric-value" id="metricDeposit">$0.00</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>总客损</span><span>经营结果</span></div>
+            <div class="metric-value" id="metricTotalLoss">$0.00</div>
+          </div>
+        </section>
+
+        <section class="toolbar-panel" aria-label="筛选条件">
+          <div class="filter-grid">
+            <div class="field">
+              <label for="filterKeyword">商户ID / 名称</label>
+              <input id="filterKeyword" type="text" placeholder="请输入商户ID或名称" />
+            </div>
+            <div class="field">
+              <label for="filterDateStart">开始时间</label>
+              <input id="filterDateStart" type="date" />
+            </div>
+            <div class="field">
+              <label for="filterDateEnd">结束时间</label>
+              <input id="filterDateEnd" type="date" />
+            </div>
+            <div class="field">
+              <label for="filterRisk">风控状态</label>
+              <select id="filterRisk">
+                <option value="">全部状态</option>
+                <option value="normal">正常</option>
+                <option value="warning">关注</option>
+                <option value="danger">高风险</option>
+              </select>
+            </div>
+            <div class="button-row">
+              <button class="btn" id="searchBtn" type="button">搜索</button>
+              <button class="btn secondary" id="resetBtn" type="button">重置</button>
+              <button class="btn export" id="exportBtn" type="button">导出报表</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-panel" aria-label="商户日统计表">
+          <div class="section-header">
+            <div class="section-title">商户日统计</div>
+            <div class="section-meta" id="tableCount">0 条日统计</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>商户ID</th>
+                  <th>商户名称</th>
+                  <th>子站点数</th>
+                  <th>可用余额</th>
+                  <th>活跃会员</th>
+                  <th>充值人数</th>
+                  <th>投注人数</th>
+                  <th>用户充值</th>
+                  <th>提现金额</th>
+                  <th>有效投注</th>
+                  <th>总客损</th>
+                  <th>风控状态</th>
+                </tr>
+              </thead>
+              <tbody id="merchantTableBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <div id="paginationInfo">共 0 条日统计数据</div>
+            <div class="pager-actions" id="paginationActions"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="custom/js/merchant-data.js"></script>
+  </body>
+</html>
