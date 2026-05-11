@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>游戏厂商对账表</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/game-vendor-reconciliation.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/游戏厂商对账表/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="game_vendor_reconciliation">
+    <div id="base">
+    <main class="page-shell">
+      <header class="page-header">
+        <div class="title-group">
+          <h1>游戏厂商对账表</h1>
+          <p>按自然月汇总供应商费用，展开后查看供应商下各厂商和游戏类型的费率明细。</p>
+        </div>
+        <div class="month-chip">
+          <span>当前账期</span>
+          <strong id="metricMonth">2026-04</strong>
+        </div>
+      </header>
+
+      <section class="metric-grid" aria-label="账单统计">
+        <div class="metric-card">
+          <div class="metric-label">
+            <span>供应商账单</span>
+            <span>按月聚合</span>
+          </div>
+          <div class="metric-value" id="metricSupplier">0</div>
+          <div class="metric-note">供应商 + 自然月维度</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">
+            <span>应付总费用</span>
+            <span>费率 * 有效投注</span>
+          </div>
+          <div class="metric-value" id="metricFee">$0.00</div>
+          <div class="metric-note">按供应商、厂商、类型费率计算</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">
+            <span>有效投注</span>
+            <span>结算口径</span>
+          </div>
+          <div class="metric-value" id="metricBet">$0.00</div>
+          <div class="metric-note">仅统计当前筛选条件</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">
+            <span>待处理账单</span>
+            <span id="metricProfit">$0.00</span>
+          </div>
+          <div class="metric-value" id="metricWait">0</div>
+          <div class="metric-note">包含待结算、差异待核、混合状态</div>
+        </div>
+      </section>
+
+      <section class="toolbar-panel" aria-label="筛选条件">
+        <div class="filter-grid">
+          <div class="field">
+            <label for="filterSupplier">供应商</label>
+            <select id="filterSupplier">
+              <option value="">全部供应商</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filterVendor">游戏厂商</label>
+            <select id="filterVendor">
+              <option value="">全部厂商</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filterType">游戏类型</label>
+            <select id="filterType">
+              <option value="">全部游戏类型</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filterMonth">账单月份</label>
+            <select id="filterMonth">
+              <option value="">全部月份</option>
+              <option value="2026-04">2026-04</option>
+              <option value="2026-03">2026-03</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filterStatus">结算状态</label>
+            <select id="filterStatus">
+              <option value="">全部状态</option>
+              <option value="wait">待结算</option>
+              <option value="done">已结算</option>
+              <option value="diff">差异待核</option>
+            </select>
+          </div>
+          <div class="button-row">
+            <button class="btn" id="searchBtn" type="button">搜索</button>
+            <button class="btn secondary" id="resetBtn" type="button">重置</button>
+            <button class="btn export" id="exportBtn" type="button">导出</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="table-panel" aria-label="对账表">
+        <div class="table-header">
+          <div class="table-title">供应商费用汇总</div>
+          <div class="table-help" id="tableCount">0 个供应商账单</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>供应商</th>
+                <th>月份</th>
+                <th>厂商</th>
+                <th>游戏类型</th>
+                <th>综合费率</th>
+                <th>投注人数</th>
+                <th>投注次数</th>
+                <th>有效投注</th>
+                <th>RTP</th>
+                <th>线路盈利</th>
+                <th>应付费用</th>
+                <th>结算状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="reconciliationBody"></tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <div id="paginationInfo">共 0 条供应商账单</div>
+          <div class="pager-actions" id="paginationActions"></div>
+        </div>
+      </section>
+    </main>
+    </div>
+
+    <script src="custom/js/game-vendor-reconciliation.js"></script>
+  </body>
+</html>
