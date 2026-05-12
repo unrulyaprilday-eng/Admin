@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>平台收入总览</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/platform-income-overview.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/平台收入总览/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="platform_income_overview">
+    <div id="base">
+      <main class="page-shell">
+        <header class="page-header">
+          <div class="title-group">
+            <h1>平台收入总览</h1>
+            <p class="page-desc">说明：按自然月统计平台收入，商户充值和商户余额作为资金参考展示，不计入平台实际收益。</p>
+          </div>
+          <div class="month-chip">
+            <span>当前账期</span>
+            <strong id="metricMonth">2026-05</strong>
+          </div>
+        </header>
+
+        <section class="metric-grid" aria-label="收入核心指标">
+          <div class="metric-card primary">
+            <div class="metric-label"><span>平台实际收益</span><span>月结口径</span></div>
+            <div class="metric-value" id="metricActualIncome">$0.00</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>固定费用收入</span><span>开版+服务器</span></div>
+            <div class="metric-value" id="metricFixedFee">$0.00</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>厂商费用差额</span><span>收入-成本</span></div>
+            <div class="metric-value" id="metricVendorDiff">$0.00</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>优惠调整扣减</span><span>优惠+减免+人工净额</span></div>
+            <div class="metric-value" id="metricDeduction">$0.00</div>
+          </div>
+        </section>
+
+        <section class="metric-grid fund-grid" aria-label="资金参考指标">
+          <div class="metric-card compact">
+            <div class="metric-label"><span>商户充值(U)</span><span>资金流入</span></div>
+            <div class="metric-value" id="metricMerchantRecharge">$0.00</div>
+          </div>
+          <div class="metric-card compact">
+            <div class="metric-label"><span>商户可用余额</span><span>余额占用</span></div>
+            <div class="metric-value" id="metricMerchantBalance">$0.00</div>
+          </div>
+          <div class="formula-note">
+            平台实际收益 = 开版费 + 服务器费用 + 厂商费用差额 - 人工加款 + 人工扣款 - 商户充值优惠 - 其他减免
+          </div>
+        </section>
+
+        <section class="toolbar-panel" aria-label="筛选条件">
+          <div class="filter-grid">
+            <div class="field">
+              <label for="filterMonthStart">开始月份</label>
+              <input id="filterMonthStart" type="month" value="2026-05" />
+            </div>
+            <div class="field">
+              <label for="filterMonthEnd">结束月份</label>
+              <input id="filterMonthEnd" type="month" value="2026-05" />
+            </div>
+            <div class="field">
+              <label for="filterMerchant">商户ID / 名称</label>
+              <input id="filterMerchant" type="text" placeholder="请输入商户ID或名称" />
+            </div>
+            <div class="field">
+              <label for="filterStatus">结算状态</label>
+              <select id="filterStatus">
+                <option value="">全部状态</option>
+                <option value="wait">待确认</option>
+                <option value="confirmed">已确认</option>
+                <option value="settled">已结算</option>
+              </select>
+            </div>
+            <div class="button-row">
+              <button class="btn" id="searchBtn" type="button">搜索</button>
+              <button class="btn secondary" id="resetBtn" type="button">重置</button>
+              <button class="btn export" id="exportBtn" type="button">导出</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-tabs" aria-label="报表视图">
+          <button class="tab-btn active" type="button" data-view="overview">月度总览</button>
+          <button class="tab-btn" type="button" data-view="detail">商户详表</button>
+        </section>
+
+        <section class="table-panel" id="overviewPanel" aria-label="月度总览表">
+          <div class="table-header">
+            <div class="table-title">月度收入总览</div>
+            <div class="table-help" id="overviewCount">0 条月度汇总</div>
+          </div>
+          <div class="table-wrap">
+            <table class="overview-table">
+              <thead>
+                <tr>
+                  <th>月份</th>
+                  <th>商户数</th>
+                  <th>商户充值(U)</th>
+                  <th>商户可用余额</th>
+                  <th>开版费</th>
+                  <th>服务器费用</th>
+                  <th>厂商收费</th>
+                  <th>厂商成本</th>
+                  <th>厂商费用差额</th>
+                  <th>人工加款</th>
+                  <th>人工扣款</th>
+                  <th>商户充值优惠</th>
+                  <th>其他减免</th>
+                  <th>平台实际收益</th>
+                  <th>结算状态</th>
+                </tr>
+              </thead>
+              <tbody id="overviewBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="table-panel is-hidden" id="detailPanel" aria-label="商户收入详表">
+          <div class="table-header">
+            <div class="table-title">商户收入详表</div>
+            <div class="table-help" id="detailCount">0 条商户收入</div>
+          </div>
+          <div class="table-wrap">
+            <table class="detail-table">
+              <thead>
+                <tr>
+                  <th>月份</th>
+                  <th>商户ID</th>
+                  <th>商户名称</th>
+                  <th>商户充值(U)</th>
+                  <th>商户可用余额</th>
+                  <th>开版费</th>
+                  <th>服务器费用</th>
+                  <th>厂商收费</th>
+                  <th>厂商成本</th>
+                  <th>厂商费用差额</th>
+                  <th>人工加款</th>
+                  <th>人工扣款</th>
+                  <th>商户充值优惠</th>
+                  <th>其他减免</th>
+                  <th>平台实际收益</th>
+                  <th>结算状态</th>
+                </tr>
+              </thead>
+              <tbody id="detailBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <div id="paginationInfo">共 0 条商户收入</div>
+            <div class="pager-actions" id="paginationActions"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="custom/js/platform-income-overview.js"></script>
+  </body>
+</html>
