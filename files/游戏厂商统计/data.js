@@ -1,14 +1,14 @@
 $axure.loadCurrentPage(
 (function() {
   return {
-    "url": "平台收入总览.html",
-    "generationDate": new Date(2026, 4, 11),
+    "url": "游戏厂商统计.html",
+    "generationDate": new Date(2026, 4, 13),
     "isCanvasEnabled": false,
     "variables": ["OnLoadVariable"],
     "page": {
-      "packageId": "platform_income_overview",
+      "packageId": "game_vendor_statistics",
       "type": "Axure:Page",
-      "name": "平台收入总览",
+      "name": "游戏厂商统计",
       "notes": {},
       "annotations": [],
       "style": {},

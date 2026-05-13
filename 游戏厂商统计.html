@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>游戏厂商统计</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/game-vendor-statistics.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/游戏厂商统计/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="game_vendor_statistics">
+    <div id="base">
+      <main class="page-shell">
+        <header class="page-header">
+          <div class="title-group">
+            <h1>游戏厂商统计</h1>
+            <p class="page-desc">按供应商、厂商和游戏类型统计投注表现，用户侧充值提现不参与本页口径。</p>
+          </div>
+        </header>
+
+        <section class="metric-grid" aria-label="游戏统计概览">
+          <div class="metric-card">
+            <div class="metric-label"><span>投注人数</span><span>去重参考</span></div>
+            <div class="metric-value" id="metricUsers">0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>有效投注</span><span>经营口径</span></div>
+            <div class="metric-value" id="metricValidBet">$0.00</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label"><span>总客损</span><span>投注-派彩</span></div>
+            <div class="metric-value" id="metricLoss">$0.00</div>
+          </div>
+        </section>
+
+        <section class="toolbar-panel" aria-label="筛选条件">
+          <div class="filter-grid">
+            <div class="field">
+              <label for="dateStart">开始日期</label>
+              <input id="dateStart" type="date" value="2026-05-13" />
+            </div>
+            <div class="field">
+              <label for="dateEnd">结束日期</label>
+              <input id="dateEnd" type="date" value="2026-05-13" />
+            </div>
+            <div class="field">
+              <label for="filterSupplier">供应商</label>
+              <select id="filterSupplier">
+                <option value="">全部供应商</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="filterVendor">厂商</label>
+              <select id="filterVendor">
+                <option value="">全部厂商</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="filterType">游戏类型</label>
+              <select id="filterType">
+                <option value="">全部类型</option>
+              </select>
+            </div>
+            <div class="button-row">
+              <button class="btn" id="searchBtn" type="button">搜索</button>
+              <button class="btn secondary" id="resetBtn" type="button">重置</button>
+              <button class="btn export" id="exportBtn" type="button">导出</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-panel" aria-label="游戏厂商统计表">
+          <div class="section-header">
+            <div class="section-title">游戏厂商统计</div>
+            <div class="section-meta" id="tableCount">0 条统计</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>供应商</th>
+                  <th>厂商</th>
+                  <th>游戏类型</th>
+                  <th>投注人数</th>
+                  <th>注单数</th>
+                  <th>总投注</th>
+                  <th>有效投注</th>
+                  <th>派彩</th>
+                  <th>RTP</th>
+                  <th>客损</th>
+                  <th>变化</th>
+                </tr>
+              </thead>
+              <tbody id="statBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/game-vendor-statistics.js"></script>
+  </body>
+</html>

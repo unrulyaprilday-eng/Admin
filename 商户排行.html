@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>商户排行</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/merchant-ranking.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/商户排行/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="merchant_ranking">
+    <div id="base">
+      <main class="page-shell">
+        <header class="page-header">
+          <div class="title-group">
+            <h1>商户排行</h1>
+            <p class="page-desc">按日期范围统计商户经营表现，用于查看商户充值、提现、充提差、投注与推广消耗排行。</p>
+          </div>
+        </header>
+
+        <section class="toolbar-panel" aria-label="筛选条件">
+          <div class="filter-grid">
+            <div class="field">
+              <label for="dateStart">开始日期</label>
+              <input id="dateStart" type="date" value="2026-05-13" />
+            </div>
+            <div class="field">
+              <label for="dateEnd">结束日期</label>
+              <input id="dateEnd" type="date" value="2026-05-13" />
+            </div>
+            <div class="button-row">
+              <button class="btn" id="searchBtn" type="button">搜索</button>
+              <button class="btn export" id="exportBtn" type="button">导出</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-panel" aria-label="商户排行表">
+          <div class="section-header">
+            <div class="section-title">商户排行</div>
+            <div class="section-meta" id="tableCount">最多显示 10 条</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>排名</th>
+                  <th>商户ID</th>
+                  <th>商户名称</th>
+                  <th>商户充值金额</th>
+                  <th>商户提现金额</th>
+                  <th>商户充提差额</th>
+                  <th>商户贡献</th>
+                  <th>商户总投注</th>
+                  <th>商户优惠总赠送</th>
+                  <th>商户总注册人数</th>
+                  <th>商户总充值人数</th>
+                  <th>商户广告消耗</th>
+                  <th>商户投注人数</th>
+                </tr>
+              </thead>
+              <tbody id="rankingBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/merchant-ranking.js"></script>
+  </body>
+</html>

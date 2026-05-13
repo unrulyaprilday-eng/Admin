@@ -1,0 +1,389 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 1280px;
+  background: #f5f7fb;
+  color: #1f2937;
+  font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+}
+
+#base {
+  width: 100%;
+}
+
+.dashboard-shell {
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 18px 16px 28px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.dashboard-header p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 22px;
+}
+
+.header-meta {
+  min-width: 180px;
+  padding: 10px 14px;
+  border: 1px solid #dce6f3;
+  border-radius: 6px;
+  background: #fff;
+  text-align: right;
+}
+
+.header-meta span,
+.summary-item span,
+.income-card span,
+.fund-list span {
+  display: block;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.header-meta strong {
+  display: block;
+  color: #1f5fbf;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.btn,
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 16px;
+  border: 1px solid #d8e1ee;
+  border-radius: 4px;
+  background: #fff;
+  color: #374151;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.primary,
+.link-btn {
+  border-color: #2f80ed;
+  background: #2f80ed;
+  color: #fff;
+}
+
+.summary-strip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  margin-top: 14px;
+  border: 1px solid #e1e8f2;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.summary-item {
+  min-height: 86px;
+  padding: 13px 12px;
+  border-right: 1px solid #e8eef6;
+}
+
+.summary-item:last-child {
+  border-right: 0;
+}
+
+.summary-item strong {
+  display: block;
+  margin-top: 8px;
+  color: #172033;
+  font-size: 18px;
+  line-height: 26px;
+  word-break: break-word;
+}
+
+.summary-item strong.highlight-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0f5ec7;
+}
+
+.summary-item strong.income-highlight {
+  font-size: 28px;
+  color: #0f766e;
+}
+
+.summary-item.accent {
+  background: #f0f7ff;
+}
+
+.summary-item.accent strong {
+  color: #0f5ec7;
+}
+
+.summary-item.warning strong {
+  color: #d97706;
+}
+
+.section-panel {
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid #e1e8f2;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(31, 60, 112, 0.045);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.period-tabs {
+  display: inline-flex;
+  height: 34px;
+  padding: 3px;
+  border: 1px solid #dfe7f2;
+  border-radius: 6px;
+  background: #f8fbff;
+}
+
+.period-tabs button {
+  min-width: 52px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #647084;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.period-tabs button.active {
+  background: #2f80ed;
+  color: #fff;
+}
+
+.section-head.compact {
+  margin-bottom: 12px;
+}
+
+.section-head h2 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.section-head p {
+  margin: 3px 0 0;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.income-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.income-card {
+  min-height: 112px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fbfdff;
+}
+
+.income-card.primary {
+  border-color: #b9d7ff;
+  background: #eef6ff;
+}
+
+.income-card strong {
+  display: block;
+  margin-top: 10px;
+  color: #172033;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.income-card.primary strong {
+  color: #0f5ec7;
+}
+
+.income-card.negative strong {
+  color: #dc2626;
+}
+
+.income-card em {
+  display: block;
+  margin-top: 8px;
+  color: #7a8597;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 18px;
+}
+
+.todo-item {
+  padding: 12px;
+  border: 1px solid #e5ebf4;
+  border-radius: 6px;
+  background: #fbfdff;
+}
+
+.todo-list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.todo-item span {
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.todo-item strong {
+  color: #172033;
+  font-size: 18px;
+}
+
+.todo-item.danger strong {
+  color: #dc2626;
+}
+
+.todo-item.warning strong {
+  color: #d97706;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e5ebf4;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  min-width: 1080px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+th,
+td {
+  height: 42px;
+  padding: 0 12px;
+  border-bottom: 1px solid #edf2f7;
+  color: #374151;
+  font-size: 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: #f3f6fa;
+  color: #647084;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f8fbff;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.money,
+.positive {
+  color: #0f766e;
+  font-weight: 600;
+}
+
+.negative-text {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.status.ok {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.status.wait {
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.status.risk {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+@media (max-width: 1400px) {
+  .summary-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .summary-item:nth-child(4) {
+    border-right: 0;
+  }
+
+  .summary-item:nth-child(n+5) {
+    border-top: 1px solid #e8eef6;
+  }
+
+  .income-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .todo-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

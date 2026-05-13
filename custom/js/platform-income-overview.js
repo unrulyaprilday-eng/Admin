@@ -234,7 +234,7 @@
       var overviewLines = aggregateByMonth(list).map(function (row) {
         return [row.month, row.merchantCount, money(row.merchantRecharge), money(row.merchantBalance), money(row.setupFee), money(row.serverFee), money(row.vendorCharge), money(row.vendorCost), money(vendorDiff(row)), money(row.manualAdd), money(row.manualDeduct), money(row.rechargeBonus), money(row.otherDeduction), money(actualIncome(row)), statusMap[row.status].label];
       });
-      downloadCsv("平台收入总览_月度总览.csv", overviewHeader, overviewLines);
+      downloadCsv("平台收入_月度总览.csv", overviewHeader, overviewLines);
       return;
     }
 
@@ -242,7 +242,7 @@
     var detailLines = list.map(function (row) {
       return [row.month, row.merchantId, row.merchantName, money(row.merchantRecharge), money(row.merchantBalance), money(row.setupFee), money(row.serverFee), money(row.vendorCharge), money(row.vendorCost), money(vendorDiff(row)), money(row.manualAdd), money(row.manualDeduct), money(row.rechargeBonus), money(row.otherDeduction), money(actualIncome(row)), statusMap[row.status].label];
     });
-    downloadCsv("平台收入总览_商户详表.csv", detailHeader, detailLines);
+    downloadCsv("平台收入_商户详表.csv", detailHeader, detailLines);
   }
 
   function bind() {
