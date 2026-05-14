@@ -10,11 +10,17 @@
   --line-strong: #d8e1ec;
   --text: #1f2a3d;
   --muted: #6b7789;
+  --muted-light: #9aa7b8;
   --blue: #2f7cf6;
   --green: #17a673;
   --orange: #f08a24;
   --red: #d45353;
   --shadow: 0 10px 26px rgba(31, 48, 76, 0.07);
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
@@ -23,12 +29,17 @@ body {
   color: var(--text);
   font-family: "Inter", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
   font-size: 13px;
+  letter-spacing: 0;
 }
 
 button,
 input,
 select {
   font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .page-shell {
@@ -47,17 +58,21 @@ select {
   margin: 0;
   font-size: 18px;
   line-height: 26px;
+  font-weight: 700;
 }
 
 .page-desc {
+  max-width: 880px;
   margin: 6px 0 0;
+  padding-left: 10px;
+  border-left: 3px solid var(--line-strong);
   color: var(--muted);
   line-height: 20px;
 }
 
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -79,6 +94,7 @@ select {
 .metric-label {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   color: var(--muted);
 }
 
@@ -87,6 +103,7 @@ select {
   font-size: 22px;
   line-height: 28px;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .toolbar-panel {
@@ -96,7 +113,7 @@ select {
 
 .filter-grid {
   display: grid;
-  grid-template-columns: 150px 150px minmax(190px, 1.2fr) minmax(150px, 1fr) minmax(150px, 1fr) minmax(140px, 0.9fr) auto;
+  grid-template-columns: 145px 145px minmax(175px, 1fr) minmax(135px, 0.8fr) minmax(135px, 0.8fr) minmax(125px, 0.75fr) minmax(170px, 1fr) minmax(125px, 0.7fr) auto;
   gap: 12px;
   align-items: end;
 }
@@ -115,11 +132,20 @@ select {
   padding: 0 10px;
   border: 1px solid var(--line-strong);
   border-radius: 5px;
+  background: #fff;
+  color: var(--text);
   outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #8bb8ff;
+  box-shadow: 0 0 0 3px rgba(47, 124, 246, 0.12);
 }
 
 .button-row {
   display: flex;
+  justify-content: flex-end;
   gap: 8px;
 }
 
@@ -132,7 +158,6 @@ select {
   color: #fff;
   font-weight: 600;
   white-space: nowrap;
-  cursor: pointer;
 }
 
 .btn.secondary {
@@ -163,7 +188,8 @@ select {
   font-weight: 700;
 }
 
-.section-meta {
+.section-meta,
+.pagination {
   color: var(--muted);
 }
 
@@ -173,7 +199,7 @@ select {
 
 table {
   width: 100%;
-  min-width: 1480px;
+  min-width: 1680px;
   border-collapse: collapse;
 }
 
@@ -194,17 +220,81 @@ th {
 }
 
 .money,
-.number {
+.number,
+.rate {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
 }
 
-.positive {
-  color: var(--green);
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
   font-weight: 700;
 }
 
-.negative {
+.tag.normal {
+  color: var(--green);
+  background: #eaf8f3;
+}
+
+.tag.maintenance {
+  color: var(--orange);
+  background: #fff5e8;
+}
+
+.loss-positive {
+  color: var(--green);
+}
+
+.loss-negative {
   color: var(--red);
-  font-weight: 700;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 0 14px;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.pagination-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.page-btn {
+  min-width: 32px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: #fff;
+  color: #415066;
+}
+
+.page-btn.active {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: #fff;
+}
+
+.page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 1360px) {
+  .page-shell {
+    min-width: 1180px;
+  }
+
+  .filter-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  }
 }

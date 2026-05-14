@@ -104,9 +104,20 @@ body {
 }
 
 .summary-item {
-  min-height: 86px;
-  padding: 13px 12px;
+  position: relative;
+  min-height: 104px;
+  padding: 16px 14px;
   border-right: 1px solid #e8eef6;
+}
+
+.summary-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #d7e7ff;
 }
 
 .summary-item:last-child {
@@ -115,7 +126,7 @@ body {
 
 .summary-item strong {
   display: block;
-  margin-top: 8px;
+  margin-top: 11px;
   color: #172033;
   font-size: 18px;
   line-height: 26px;
@@ -123,13 +134,15 @@ body {
 }
 
 .summary-item strong.highlight-number {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 27px;
+  line-height: 34px;
+  font-weight: 800;
   color: #0f5ec7;
 }
 
 .summary-item strong.income-highlight {
-  font-size: 28px;
+  font-size: 30px;
+  line-height: 36px;
   color: #0f766e;
 }
 
@@ -137,8 +150,16 @@ body {
   background: #f0f7ff;
 }
 
+.summary-item.accent::before {
+  background: #0f766e;
+}
+
 .summary-item.accent strong {
   color: #0f5ec7;
+}
+
+.summary-item.accent strong.income-highlight {
+  color: #0f766e;
 }
 
 .summary-item.warning strong {

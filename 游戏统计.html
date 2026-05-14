@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>游戏厂商统计</title>
+    <title>游戏统计</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
     <link href="data/styles.css" type="text/css" rel="stylesheet" />
-    <link href="custom/css/game-vendor-statistics.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/game-statistics.css" type="text/css" rel="stylesheet" />
     <script src="resources/scripts/jquery-3.7.1.min.js"></script>
     <script src="resources/scripts/axure/axQuery.js"></script>
     <script src="resources/scripts/axure/globals.js"></script>
@@ -39,24 +39,28 @@
     <script src="resources/scripts/axure/math.js"></script>
     <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
     <script src="data/document.js"></script>
-    <script src="files/游戏厂商统计/data.js"></script>
+    <script src="files/游戏统计/data.js"></script>
     <script type="text/javascript">
       $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
   </head>
-  <body data-axure-page-id="game_vendor_statistics">
+  <body data-axure-page-id="game_statistics">
     <div id="base">
       <main class="page-shell">
         <header class="page-header">
           <div class="title-group">
-            <h1>游戏厂商统计</h1>
-            <p class="page-desc">按供应商、厂商和游戏类型统计投注表现，用户侧充值提现不参与本页口径。</p>
+            <h1>游戏统计</h1>
+            <p class="page-desc">按具体游戏维度统计当前筛选时间段内的投注表现，用于观察游戏热度、收益贡献和风险波动；充值、提现不参与本页口径。</p>
           </div>
         </header>
 
         <section class="metric-grid" aria-label="游戏统计概览">
+          <div class="metric-card">
+            <div class="metric-label"><span>正常游戏数</span><span>当前视图</span></div>
+            <div class="metric-value" id="metricOnlineGames">0</div>
+          </div>
           <div class="metric-card">
             <div class="metric-label"><span>投注人数</span><span>去重参考</span></div>
             <div class="metric-value" id="metricUsers">0</div>
@@ -66,7 +70,7 @@
             <div class="metric-value" id="metricValidBet">$0.00</div>
           </div>
           <div class="metric-card">
-            <div class="metric-label"><span>总客损</span><span>投注-派彩</span></div>
+            <div class="metric-label"><span>客损</span><span>投注-派彩</span></div>
             <div class="metric-value" id="metricLoss">$0.00</div>
           </div>
         </section>
@@ -75,7 +79,7 @@
           <div class="filter-grid">
             <div class="field">
               <label for="dateStart">开始日期</label>
-              <input id="dateStart" type="date" value="2026-05-13" />
+              <input id="dateStart" type="date" value="2026-05-11" />
             </div>
             <div class="field">
               <label for="dateEnd">结束日期</label>
@@ -103,6 +107,18 @@
                 <option value="">全部类型</option>
               </select>
             </div>
+            <div class="field">
+              <label for="filterGame">游戏ID / 名称</label>
+              <input id="filterGame" type="text" placeholder="请输入游戏ID或名称" />
+            </div>
+            <div class="field">
+              <label for="filterStatus">游戏状态</label>
+              <select id="filterStatus">
+                <option value="">全部状态</option>
+                <option value="normal">正常</option>
+                <option value="maintenance">维护中</option>
+              </select>
+            </div>
             <div class="button-row">
               <button class="btn" id="searchBtn" type="button">搜索</button>
               <button class="btn secondary" id="resetBtn" type="button">重置</button>
@@ -111,15 +127,17 @@
           </div>
         </section>
 
-        <section class="section-panel" aria-label="游戏厂商统计表">
+        <section class="section-panel" aria-label="游戏统计表">
           <div class="section-header">
-            <div class="section-title">游戏厂商统计</div>
-            <div class="section-meta" id="tableCount">0 条统计</div>
+            <div class="section-title">游戏统计</div>
+            <div class="section-meta" id="tableCount">0 条游戏统计</div>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
+                  <th>游戏ID</th>
+                  <th>游戏名称</th>
                   <th>供应商</th>
                   <th>厂商</th>
                   <th>游戏类型</th>
@@ -131,14 +149,19 @@
                   <th>派彩</th>
                   <th>RTP</th>
                   <th>客损</th>
+                  <th>游戏状态</th>
                 </tr>
               </thead>
               <tbody id="statBody"></tbody>
             </table>
           </div>
+          <div class="pagination">
+            <div id="paginationInfo">共 0 条游戏统计</div>
+            <div class="pagination-actions" id="paginationActions"></div>
+          </div>
         </section>
       </main>
     </div>
-    <script src="custom/js/game-vendor-statistics.js"></script>
+    <script src="custom/js/game-statistics.js"></script>
   </body>
 </html>
