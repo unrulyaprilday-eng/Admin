@@ -172,6 +172,33 @@
     els.body.innerHTML = list.length ? list.map(rowHtml).join("") : emptyRow();
   }
 
+  function currencyOptions() {
+    var keyword = els.keyword.value.trim().toLowerCase();
+    return rows.filter(function (row) {
+      var text = row.code + row.name + row.symbol;
+      return !keyword || text.toLowerCase().indexOf(keyword) >= 0;
+    });
+  }
+
+  function renderCurrencyMenu() {
+    var list = currencyOptions();
+    els.currencyMenu.innerHTML = list.length ? list.map(function (row) {
+      return "<button class=\"select-option\" type=\"button\" data-code=\"" + escapeHtml(row.code) + "\">"
+        + "<b>" + escapeHtml(row.code) + "</b>"
+        + "<span>" + escapeHtml(row.name) + "</span>"
+        + "</button>";
+    }).join("") : "<button class=\"select-option\" type=\"button\" disabled><span>暂无匹配币种</span></button>";
+  }
+
+  function showCurrencyMenu() {
+    renderCurrencyMenu();
+    els.currencyMenu.classList.remove("is-hidden");
+  }
+
+  function hideCurrencyMenu() {
+    els.currencyMenu.classList.add("is-hidden");
+  }
+
   function findRow(id) {
     return rows.filter(function (row) { return row.id === id; })[0];
   }
@@ -247,6 +274,7 @@
     els.search.addEventListener("click", function () {
       filters.keyword = els.keyword.value.trim();
       filters.type = els.type.value;
+      hideCurrencyMenu();
       render();
     });
     els.reset.addEventListener("click", function () {
@@ -254,7 +282,29 @@
       els.type.value = "";
       filters.keyword = "";
       filters.type = "";
+      hideCurrencyMenu();
       render();
+    });
+    els.keyword.addEventListener("focus", showCurrencyMenu);
+    els.keyword.addEventListener("input", showCurrencyMenu);
+    els.currencyToggle.addEventListener("click", function () {
+      if (els.currencyMenu.classList.contains("is-hidden")) {
+        showCurrencyMenu();
+        els.keyword.focus();
+      } else {
+        hideCurrencyMenu();
+      }
+    });
+    els.currencyMenu.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-code]");
+      if (!button) return;
+      els.keyword.value = button.getAttribute("data-code");
+      hideCurrencyMenu();
+    });
+    document.addEventListener("click", function (event) {
+      if (!event.target.closest(".search-select")) {
+        hideCurrencyMenu();
+      }
     });
     els.body.addEventListener("click", function (event) {
       var button = event.target.closest("[data-action]");
@@ -284,6 +334,8 @@
     els = {
       body: document.getElementById("currencyBody"),
       keyword: document.getElementById("currencyFilter"),
+      currencyToggle: document.getElementById("currencyToggle"),
+      currencyMenu: document.getElementById("currencyMenu"),
       type: document.getElementById("typeFilter"),
       search: document.getElementById("searchBtn"),
       reset: document.getElementById("resetBtn"),

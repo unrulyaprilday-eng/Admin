@@ -60,7 +60,11 @@
           <div class="filter-row">
             <label class="field">
               <span>币种:</span>
-              <input id="currencyFilter" type="text" placeholder="请输入币种名称/符号" />
+              <span class="search-select">
+                <input id="currencyFilter" type="text" autocomplete="off" placeholder="搜索或选择币种" />
+                <button class="select-arrow" type="button" id="currencyToggle" aria-label="展开币种">⌄</button>
+                <span class="select-menu is-hidden" id="currencyMenu"></span>
+              </span>
             </label>
             <label class="field">
               <span>货币类型:</span>
