@@ -447,6 +447,10 @@ body {
   margin-bottom: 16px;
 }
 
+.merchant-status-dialog__field[hidden] {
+  display: none !important;
+}
+
 .merchant-status-dialog__field span {
   display: block;
   margin-bottom: 8px;
