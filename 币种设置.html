@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>币种设置</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/currency-settings.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/币种设置/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="currency_settings">
+    <div id="base">
+      <main class="currency-page">
+        <section class="currency-panel" aria-label="币种设置">
+          <header class="page-head">
+            <div>
+              <h1>币种设置</h1>
+              <p>维护内置币种的图标、符号及加密货币支持主链。</p>
+            </div>
+          </header>
+
+          <div class="filter-row">
+            <label class="field">
+              <span>币种:</span>
+              <input id="currencyFilter" type="text" placeholder="请输入币种名称/符号" />
+            </label>
+            <label class="field">
+              <span>货币类型:</span>
+              <select id="typeFilter">
+                <option value="">全部</option>
+                <option value="法币">法币</option>
+                <option value="加密货币">加密货币</option>
+              </select>
+            </label>
+            <button class="btn primary" type="button" id="searchBtn">搜索</button>
+            <button class="btn ghost" type="button" id="resetBtn">重置</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="col-id">币种ID</th>
+                  <th class="col-code">币种编码</th>
+                  <th class="col-icon">币种ICON</th>
+                  <th class="col-name">币种名称</th>
+                  <th class="col-symbol">币种符号</th>
+                  <th class="col-type">货币类型</th>
+                  <th class="col-chain">主链</th>
+                  <th class="col-remark">备注</th>
+                  <th class="col-action">操作</th>
+                </tr>
+              </thead>
+              <tbody id="currencyBody"></tbody>
+            </table>
+          </div>
+          <p class="table-note">一个加密货币可以对应多个主链；法币不需要配置主链。</p>
+        </section>
+
+        <section class="modal-layer is-hidden" id="currencyModal" aria-label="币种编辑弹窗">
+          <div class="modal-mask"></div>
+          <form class="modal-card" id="currencyForm">
+            <header class="modal-header">
+              <h2 id="modalTitle">编辑币种</h2>
+              <button class="close-btn" type="button" id="closeModal" aria-label="关闭">×</button>
+            </header>
+            <div class="modal-body">
+              <label class="modal-field">
+                <span>币种编码</span>
+                <input id="codeInput" type="text" readonly />
+              </label>
+              <label class="modal-field">
+                <span>币种名称</span>
+                <input id="nameInput" type="text" readonly />
+              </label>
+              <label class="modal-field">
+                <span>币种符号</span>
+                <input id="symbolInput" type="text" placeholder="如 $" required />
+              </label>
+              <div class="modal-field">
+                <span>币种ICON</span>
+                <label class="upload-box">
+                  <input id="iconInput" type="file" accept="image/*" />
+                  <span id="iconPreview" class="icon-preview"></span>
+                  <b>上传图片</b>
+                </label>
+                <em class="upload-tip">请上传100*100或等比例，SVG格式小于5KB的图片</em>
+              </div>
+              <div class="modal-field">
+                <span>货币类型</span>
+                <div class="radio-group">
+                  <label><input type="radio" name="currencyType" value="法币" disabled /> 法币</label>
+                  <label><input type="radio" name="currencyType" value="加密货币" disabled /> 加密货币</label>
+                </div>
+              </div>
+              <div class="modal-field chain-field is-disabled" id="chainField">
+                <span>主链</span>
+                <div class="chain-options">
+                  <label><input type="checkbox" value="TRC20" /> TRC20</label>
+                  <label class="disabled-option"><input type="checkbox" value="ERC20" disabled /> ERC20</label>
+                  <label class="disabled-option"><input type="checkbox" value="BEP20" disabled /> BEP20</label>
+                </div>
+              </div>
+              <label class="modal-field">
+                <span>备注</span>
+                <textarea id="remarkInput" placeholder="请输入备注"></textarea>
+              </label>
+            </div>
+            <footer class="modal-footer">
+              <button class="btn ghost large" type="button" id="cancelBtn">取消</button>
+              <button class="btn primary large" type="submit">保存</button>
+            </footer>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/currency-settings.js"></script>
+  </body>
+</html>

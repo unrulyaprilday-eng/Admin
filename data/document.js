@@ -219,6 +219,13 @@ $axure.loadDocument({
             "pageName": "页面管理",
             "type": "Wireframe",
             "url": "页面管理.html"
+          },
+          {
+            "id": "currency_settings",
+            "pageName": "币种设置",
+            "type": "Wireframe",
+            "url": "币种设置.html",
+            "children": []
           }
         ]
       },
