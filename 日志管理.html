@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>日志管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/log-management.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/日志管理/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="log_management">
+    <div id="base">
+      <main class="log-page">
+        <section class="log-panel" aria-label="日志管理">
+          <header class="page-head">
+            <h1>日志管理</h1>
+            <div class="tab-group" role="tablist" aria-label="日志类型">
+              <button class="tab is-active" type="button" data-tab="operation">操作日志</button>
+              <button class="tab" type="button" data-tab="login">登录日志</button>
+            </div>
+          </header>
+
+          <section class="tab-panel is-active" data-panel="operation">
+            <div class="filter-row">
+              <input class="control account-control" id="operationAccount" type="text" placeholder="输入账号" />
+              <select class="control" id="operationRole">
+                <option value="">角色</option>
+                <option value="财务">财务</option>
+                <option value="管理员">管理员</option>
+                <option value="运维">运维</option>
+              </select>
+              <select class="control" id="operationModule">
+                <option value="">操作日志类型</option>
+                <option value="财务管理">财务管理</option>
+                <option value="商户管理">商户管理</option>
+                <option value="玩家管理">玩家管理</option>
+                <option value="消息通知">消息通知</option>
+                <option value="平台管理">平台管理</option>
+                <option value="游戏管理">游戏管理</option>
+              </select>
+              <label class="date-control">
+                <span>□</span>
+                <input id="operationStart" type="text" placeholder="开始时间" />
+                <b>-</b>
+                <input id="operationEnd" type="text" placeholder="结束时间" />
+              </label>
+              <button class="btn primary" type="button" data-action="search" data-scope="operation">查询</button>
+              <button class="btn ghost" type="button" data-action="reset" data-scope="operation">重置</button>
+              <button class="btn ghost" type="button" data-action="export" data-scope="operation">导出</button>
+            </div>
+
+            <p class="note-text">系统异常日志融合在操作日志中，操作日志类型按模块分类；异常记录通过错误编码、结果状态和详情入口识别。</p>
+
+            <div class="table-wrap">
+              <table class="log-table operation-table">
+                <thead>
+                  <tr>
+                    <th class="col-id">ID</th>
+                    <th>账号</th>
+                    <th>角色</th>
+                    <th>操作日志类型</th>
+                    <th class="col-content">操作内容 / 异常描述</th>
+                    <th>操作对象ID</th>
+                    <th>错误编码</th>
+                    <th>结果</th>
+                    <th>操作时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="operationBody"></tbody>
+              </table>
+            </div>
+            <div class="pager">
+              <button type="button" disabled>‹</button>
+              <button class="is-current" type="button">1</button>
+              <button type="button">2</button>
+              <button type="button">3</button>
+              <button type="button">4</button>
+              <button type="button">5</button>
+              <button type="button">›</button>
+              <span>10条/页</span>
+            </div>
+          </section>
+
+          <section class="tab-panel" data-panel="login">
+            <div class="filter-row">
+              <input class="control account-control" id="loginAccount" type="text" placeholder="输入账号" />
+              <select class="control" id="loginRole">
+                <option value="">角色</option>
+                <option value="财务">财务</option>
+                <option value="管理员">管理员</option>
+                <option value="运维">运维</option>
+              </select>
+              <label class="date-control">
+                <span>□</span>
+                <input id="loginStart" type="text" placeholder="开始时间" />
+                <b>-</b>
+                <input id="loginEnd" type="text" placeholder="结束时间" />
+              </label>
+              <button class="btn primary" type="button" data-action="search" data-scope="login">查询</button>
+              <button class="btn ghost" type="button" data-action="reset" data-scope="login">重置</button>
+              <button class="btn ghost" type="button" data-action="export" data-scope="login">导出</button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="log-table login-table">
+                <thead>
+                  <tr>
+                    <th class="col-id">ID</th>
+                    <th>账号</th>
+                    <th>角色</th>
+                    <th>登录时间</th>
+                    <th>登出时间</th>
+                    <th>登录IP</th>
+                    <th>登录地区</th>
+                  </tr>
+                </thead>
+                <tbody id="loginBody"></tbody>
+              </table>
+            </div>
+            <div class="pager">
+              <button type="button" disabled>‹</button>
+              <button class="is-current" type="button">1</button>
+              <button type="button">2</button>
+              <button type="button">3</button>
+              <button type="button">4</button>
+              <button type="button">5</button>
+              <button type="button">›</button>
+              <span>10条/页</span>
+            </div>
+          </section>
+        </section>
+
+        <section class="dialog-layer is-hidden" id="detailDialog" aria-label="日志详情">
+          <div class="dialog-mask"></div>
+          <article class="dialog-card">
+            <header class="dialog-header">
+              <h2 id="detailTitle">日志详情</h2>
+              <button class="close-btn" id="closeDialog" type="button" aria-label="关闭">×</button>
+            </header>
+            <dl class="detail-grid" id="detailGrid"></dl>
+            <footer class="dialog-footer">
+              <button class="btn primary" id="confirmDialog" type="button">确定</button>
+            </footer>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/log-management.js"></script>
+  </body>
+</html>

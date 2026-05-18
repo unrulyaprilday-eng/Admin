@@ -226,6 +226,13 @@ $axure.loadDocument({
             "type": "Wireframe",
             "url": "币种设置.html",
             "children": []
+          },
+          {
+            "id": "log_management",
+            "pageName": "日志管理",
+            "type": "Wireframe",
+            "url": "日志管理.html",
+            "children": []
           }
         ]
       },
