@@ -1,0 +1,374 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f9;
+  color: #303744;
+  font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.suggestion-page {
+  min-width: 1320px;
+  padding: 16px 8px;
+}
+
+.suggestion-panel {
+  min-height: 360px;
+  padding: 20px 14px 0;
+  background: #fff;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.date-input,
+.field {
+  display: flex;
+  align-items: center;
+}
+
+.date-input {
+  width: 142px;
+  height: 34px;
+  padding: 0 8px;
+  border: 1px solid #d8dee8;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.date-input input {
+  width: 102px;
+  border: 0;
+  outline: 0;
+  color: #303744;
+}
+
+.calendar {
+  margin-left: auto;
+  color: #aeb8c8;
+  font-size: 12px;
+}
+
+.range-separator {
+  color: #606b7d;
+}
+
+.field {
+  gap: 6px;
+}
+
+.field span {
+  color: #242b36;
+}
+
+.field select,
+.field input {
+  width: 130px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid #d8dee8;
+  border-radius: 3px;
+  background: #fff;
+  color: #606b7d;
+  outline: none;
+}
+
+.merchant-filter input {
+  width: 150px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aeb8c8;
+}
+
+.date-input:focus-within,
+.field select:focus,
+.field input:focus,
+.modal-field textarea:focus {
+  border-color: #409eff;
+}
+
+.btn {
+  height: 34px;
+  padding: 0 16px;
+  border: 1px solid #d8dee8;
+  border-radius: 4px;
+  background: #fff;
+  color: #3e4757;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn.primary {
+  border-color: #409eff;
+  background: #409eff;
+  color: #fff;
+}
+
+.btn.success {
+  border-color: #4bbf2f;
+  background: #4bbf2f;
+  color: #fff;
+}
+
+.btn.ghost {
+  background: #fff;
+}
+
+.btn.large {
+  min-width: 58px;
+  height: 34px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 1500px;
+  border-collapse: collapse;
+  border: 1px solid #e5e9f0;
+}
+
+th,
+td {
+  height: 48px;
+  padding: 0 12px;
+  border-right: 1px solid #e5e9f0;
+  border-bottom: 1px solid #e5e9f0;
+  color: #465063;
+  text-align: center;
+  white-space: nowrap;
+}
+
+th {
+  height: 46px;
+  background: #f5f7fa;
+  color: #3f4755;
+  font-weight: 600;
+}
+
+td {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-merchant-id,
+.col-status,
+.col-attach,
+.col-operator,
+.col-action {
+  width: 92px;
+}
+
+.col-merchant-name {
+  width: 150px;
+}
+
+.col-time {
+  width: 170px;
+}
+
+.col-content,
+.col-reply {
+  width: 220px;
+}
+
+.status-tag {
+  display: inline-block;
+  min-width: 54px;
+  padding: 0 9px;
+  border-radius: 4px;
+  line-height: 26px;
+}
+
+.status-tag.pending {
+  background: #fff4e6;
+  color: #e88a00;
+}
+
+.status-tag.accepted {
+  background: #edffe9;
+  color: #30c600;
+}
+
+.status-tag.rejected {
+  background: #f5f5f5;
+  color: #8c8c8c;
+}
+
+.table-link {
+  border: 0;
+  background: transparent;
+  color: #409eff;
+}
+
+.action-btn {
+  min-width: 50px;
+  height: 28px;
+  border: 0;
+  border-radius: 4px;
+  background: #409eff;
+  color: #fff;
+}
+
+.action-btn.view {
+  background: #4bbf2f;
+}
+
+.empty-cell {
+  height: 96px;
+  color: #8b95a5;
+}
+
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+
+.modal-layer.is-hidden {
+  display: none;
+}
+
+.modal-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.46);
+}
+
+.modal-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 560px;
+  min-height: 332px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 12px rgba(28, 39, 54, 0.22);
+  transform: translate(-50%, -50%);
+}
+
+.modal-card.detail {
+  width: 560px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 12px;
+  border-bottom: 1px solid #e5e9f0;
+}
+
+.modal-header h1 {
+  margin: 0;
+  color: #303744;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.close-btn {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: #606b7d;
+  font-size: 26px;
+  line-height: 24px;
+}
+
+.modal-body {
+  padding: 18px 14px 8px 22px;
+}
+
+.modal-field {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #4b5563;
+}
+
+.modal-field > span {
+  padding-top: 10px;
+  text-align: right;
+}
+
+.modal-field textarea,
+.attachment-box {
+  width: 100%;
+  border: 1px solid #d8dee8;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.modal-field textarea {
+  height: 98px;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  color: #606b7d;
+}
+
+.modal-field textarea[readonly] {
+  background: #f7f7f7;
+  color: #b8bec8;
+}
+
+.attachment-box {
+  min-height: 36px;
+  padding: 8px 10px;
+}
+
+.attachment-box.empty {
+  color: #aeb8c8;
+}
+
+.attachment-box a {
+  color: #409eff;
+}
+
+.attachment-image {
+  display: block;
+  width: 320px;
+  height: 200px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 2px 14px 12px;
+}

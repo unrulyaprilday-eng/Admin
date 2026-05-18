@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>商户充值配置</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/merchant-recharge-config.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/商户充值配置/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="merchant_recharge_config">
+    <div id="base">
+      <main class="recharge-page">
+        <section class="summary-panel" aria-label="基础配置">
+          <label>笔笔送:<input id="quickRatio" type="number" value="1" min="0" />%</label>
+          <label>最小充值金额:<input id="quickMin" type="number" value="100" min="0" />U</label>
+          <label>最大充值金额:<input id="quickMax" type="number" value="200000" min="0" />U</label>
+          <button class="btn primary" id="editBtn" type="button">编辑</button>
+        </section>
+
+        <section class="table-panel" aria-label="充值档位">
+          <table>
+            <thead>
+              <tr>
+                <th>充值额度 U</th>
+                <th>赠送比例 %</th>
+                <th>赠送额度 U</th>
+              </tr>
+            </thead>
+            <tbody id="tierTable"></tbody>
+          </table>
+        </section>
+      </main>
+
+      <div class="modal-mask" id="configModal" aria-hidden="true">
+        <section class="config-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+          <header class="modal-head">
+            <h1 id="modalTitle">编辑充值配置</h1>
+            <button class="icon-close" id="closeBtn" type="button" aria-label="关闭">×</button>
+          </header>
+          <div class="modal-body">
+            <h2>基础配置</h2>
+            <div class="divider"></div>
+            <div class="basic-form">
+              <label><span><em>*</em> 笔笔送比例</span><span class="stepper"><input id="modalRatio" type="number" min="0" /><button data-target="modalRatio" data-delta="1" type="button">+</button><button data-target="modalRatio" data-delta="-1" type="button">−</button></span><b>%</b></label>
+              <label><span><em>*</em> 最小充值金额</span><span class="stepper"><input id="modalMin" type="number" min="0" /><button data-target="modalMin" data-delta="100" type="button">+</button><button data-target="modalMin" data-delta="-100" type="button">−</button></span><b>U</b></label>
+              <label><span><em>*</em> 最大充值金额</span><span class="stepper"><input id="modalMax" type="number" min="0" /><button data-target="modalMax" data-delta="1000" type="button">+</button><button data-target="modalMax" data-delta="-1000" type="button">−</button></span><b>U</b></label>
+            </div>
+
+            <h2>档位配置</h2>
+            <div class="divider"></div>
+            <p class="notice">每个档位赠送金额只能选择一种方式：赠送比例（%）或赠送额度（U），两者互斥，填写其中一个另一个自动清零。</p>
+            <div class="tier-editor" id="tierEditor"></div>
+          </div>
+          <footer class="modal-foot">
+            <button class="btn secondary" id="cancelBtn" type="button">取消</button>
+            <button class="btn primary" id="saveBtn" type="button">保存</button>
+          </footer>
+        </section>
+      </div>
+    </div>
+    <script src="custom/js/merchant-recharge-config.js"></script>
+  </body>
+</html>

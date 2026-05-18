@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>会员投诉列表</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/member-complaints.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/会员投诉列表/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="member_complaints">
+    <div id="base">
+      <main class="complaint-page">
+        <section class="complaint-panel" aria-label="会员投诉列表">
+          <div class="filter-row">
+            <label class="date-range" aria-label="被投诉日期">
+              <span class="calendar-icon">□</span>
+              <input id="startDate" type="text" placeholder="开始时间" />
+              <span>-</span>
+              <input id="endDate" type="text" placeholder="结束时间" />
+            </label>
+            <label class="field">
+              <span>消息状态:</span>
+              <select id="statusFilter">
+                <option value="">请选择消息状态</option>
+                <option value="待处理">待处理</option>
+                <option value="处理中">处理中</option>
+                <option value="已处理">已处理</option>
+              </select>
+            </label>
+            <label class="field compact">
+              <span>站点ID:</span>
+              <input id="siteIdFilter" type="text" placeholder="请输入站点ID" />
+            </label>
+            <label class="field compact">
+              <span>会员ID:</span>
+              <input id="memberIdFilter" type="text" placeholder="请输入会员ID" />
+            </label>
+            <label class="field account-field">
+              <span>会员账号:</span>
+              <input id="accountFilter" type="text" placeholder="请输入会员账号" />
+            </label>
+            <button class="btn primary" type="button" id="searchBtn">搜索</button>
+            <button class="btn ghost" type="button" id="resetBtn">重置</button>
+            <button class="btn primary" type="button" id="triggerSettingBtn">投诉触发设置</button>
+            <button class="btn primary" type="button" id="remindSettingBtn">投诉提醒设置</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="col-date">被投诉日期</th>
+                  <th class="col-merchant-id">商户ID</th>
+                  <th class="col-merchant-name">商户名称</th>
+                  <th class="col-site-id">站点ID</th>
+                  <th class="col-site-name">站点名称</th>
+                  <th class="col-member">投诉人详情</th>
+                  <th class="col-content">投诉内容</th>
+                  <th class="col-count">投诉次数</th>
+                  <th class="col-days">未处理时间（天）</th>
+                  <th class="col-reason">升级原因</th>
+                  <th class="col-status">商户处理状态</th>
+                  <th class="col-operator">处理人</th>
+                  <th class="col-time">处理时间</th>
+                  <th class="col-action">操作</th>
+                </tr>
+              </thead>
+              <tbody id="complaintBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="modal-layer is-hidden" id="detailModal" aria-label="投诉详情弹窗">
+          <div class="modal-mask"></div>
+          <div class="modal-card detail-card" role="dialog" aria-modal="true">
+            <header class="modal-header">
+              <h1 id="detailTitle">投诉详情</h1>
+              <button class="close-btn" type="button" data-close="detail" aria-label="关闭">×</button>
+            </header>
+            <div class="modal-body" id="detailBody"></div>
+            <footer class="modal-footer" id="detailFooter"></footer>
+          </div>
+        </section>
+
+        <section class="modal-layer is-hidden" id="triggerModal" aria-label="投诉触发设置">
+          <div class="modal-mask"></div>
+          <form class="modal-card trigger-card" id="triggerForm">
+            <header class="modal-header">
+              <h1>投诉触发设置</h1>
+              <button class="close-btn" type="button" data-close="trigger" aria-label="关闭">×</button>
+            </header>
+            <div class="modal-body setting-body">
+              <label class="setting-line">
+                <span>投诉达到&gt;=</span>
+                <input id="triggerDays" type="number" min="1" value="2" />
+                <span>天未处理时，进入列表</span>
+              </label>
+              <p class="note">注：如设置2天，将根据商户未处理的投诉时间，于第二天0点（运营地时区），将显示到列表。</p>
+              <label class="setting-line">
+                <span>同会员投诉&gt;=</span>
+                <input id="triggerCount" type="number" min="1" value="5" />
+                <span>次时，进入列表</span>
+              </label>
+              <p class="note">注：如设置5，同个会员投诉达到5次时，再次投诉时，不管是否处理和是否达到未处理天数都将进入列表。</p>
+            </div>
+            <footer class="modal-footer">
+              <button class="btn ghost large" type="button" data-close="trigger">取消</button>
+              <button class="btn primary large" type="submit">提交</button>
+            </footer>
+          </form>
+        </section>
+
+        <section class="modal-layer is-hidden" id="remindModal" aria-label="投诉提醒设置">
+          <div class="modal-mask"></div>
+          <form class="modal-card remind-card" id="remindForm">
+            <header class="modal-header">
+              <h1>投诉提醒设置</h1>
+              <button class="close-btn" type="button" data-close="remind" aria-label="关闭">×</button>
+            </header>
+            <div class="modal-body remind-body">
+              <label class="checkbox-line">
+                <input id="remindEnabled" type="checkbox" checked />
+                <span>已开启提醒</span>
+              </label>
+              <div class="remind-table">
+                <div class="remind-head">未处理时间（天）</div>
+                <div class="remind-head">弹窗提醒周期</div>
+                <div class="remind-head">提醒周期(天)</div>
+                <div class="remind-head">提醒内容</div>
+                <div class="remind-head">说明</div>
+                <label class="cell"><input id="unhandledDays" type="number" min="1" value="2" placeholder="未处理时间" /></label>
+                <label class="cell">
+                  <select id="remindCycle">
+                    <option value="cycle">周期提醒</option>
+                    <option value="once">只提醒1次</option>
+                  </select>
+                </label>
+                <label class="cell"><input id="remindParam" type="number" min="1" value="2" placeholder="提醒周期" /></label>
+                <label class="cell wide"><textarea id="remindContent" maxlength="1000" placeholder="提醒内容"></textarea><em id="contentCount">0 / 1000</em></label>
+                <div class="cell desc">超过未处理时间后，管理员登录时按提醒规则弹窗提示。</div>
+              </div>
+              <p class="warn-note">注：比如设置2天提醒一次，那就是（2*24）小时后的投诉时间提醒；选择只提醒1次时，仅在首次达到条件时弹窗。</p>
+            </div>
+            <footer class="modal-footer">
+              <button class="btn ghost large" type="button" data-close="remind">取消</button>
+              <button class="btn primary large" type="submit">提交</button>
+            </footer>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/member-complaints.js"></script>
+  </body>
+</html>

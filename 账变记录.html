@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>账变记录</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/account-change-records.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/账变记录/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="account_change_records">
+    <div id="base">
+      <main class="change-page">
+        <section class="toolbar" aria-label="筛选条件">
+          <div class="filter-row">
+            <input id="startTime" class="date-input" type="text" placeholder="开始时间" />
+            <span class="range-sep">至</span>
+            <input id="endTime" class="date-input" type="text" placeholder="结束时间" />
+            <label class="type-label" for="changeType">账变类型:</label>
+            <select id="changeType">
+              <option value="">请选择账变类型</option>
+              <option>商户充值</option>
+              <option>商户人工补单</option>
+              <option>商户赠送奖励</option>
+              <option>商户开版费</option>
+              <option>商户服务器线路费</option>
+              <option>商户月度账单结算</option>
+              <option>商户CDN费用</option>
+              <option>商户人工扣除</option>
+            </select>
+            <label for="merchantId">商户ID:</label>
+            <input id="merchantId" class="merchant-input" type="text" placeholder="请输入商户ID" />
+            <button class="btn primary" id="searchBtn" type="button">搜索</button>
+            <button class="btn ghost" id="resetBtn" type="button">重置</button>
+            <button class="btn export" id="exportBtn" type="button">导出报表</button>
+          </div>
+          <div class="update-bar">数据更新时间： 隔天</div>
+        </section>
+
+        <section class="table-card" aria-label="账变记录列表">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>单号</th>
+                  <th>交易时间</th>
+                  <th>商户ID</th>
+                  <th>类型</th>
+                  <th>变动前余额</th>
+                  <th>变动金额</th>
+                  <th>变动后余额</th>
+                  <th>来源</th>
+                </tr>
+              </thead>
+              <tbody id="recordBody"></tbody>
+            </table>
+          </div>
+          <div class="pager">
+            <button type="button" disabled>|&lt;</button>
+            <button type="button" disabled>&lt;&lt;</button>
+            <button type="button" disabled>&lt;</button>
+            <span class="page-no">1</span>
+            <span>/ 1</span>
+            <button type="button" disabled>&gt;</button>
+            <button type="button" disabled>&gt;&gt;</button>
+            <button type="button" disabled>&gt;|</button>
+            <select aria-label="每页条数">
+              <option>20条/页</option>
+            </select>
+            <span>共 <b id="totalCount">11</b> 条记录</span>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/account-change-records.js"></script>
+  </body>
+</html>

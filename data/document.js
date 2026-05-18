@@ -133,6 +133,20 @@ $axure.loadDocument({
             "type": "Wireframe",
             "url": "商户账单稽核.html",
             "children": []
+          },
+          {
+            "id": "account_change_records",
+            "pageName": "账变记录",
+            "type": "Wireframe",
+            "url": "账变记录.html",
+            "children": []
+          },
+          {
+            "id": "merchant_recharge_config",
+            "pageName": "商户充值配置",
+            "type": "Wireframe",
+            "url": "商户充值配置.html",
+            "children": []
           }
         ]
       },
@@ -205,6 +219,35 @@ $axure.loadDocument({
             "pageName": "页面管理",
             "type": "Wireframe",
             "url": "页面管理.html"
+          }
+        ]
+      },
+      {
+        "id": "message_center",
+        "pageName": "消息中心",
+        "type": "Folder",
+        "url": "",
+        "children": [
+          {
+            "id": "message_management",
+            "pageName": "消息管理",
+            "type": "Wireframe",
+            "url": "消息管理.html",
+            "children": []
+          },
+          {
+            "id": "member_complaints",
+            "pageName": "会员投诉列表",
+            "type": "Wireframe",
+            "url": "会员投诉列表.html",
+            "children": []
+          },
+          {
+            "id": "platform_suggestions",
+            "pageName": "平台建议",
+            "type": "Wireframe",
+            "url": "平台建议.html",
+            "children": []
           }
         ]
       }

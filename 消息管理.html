@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>消息管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/message-management.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/消息管理/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="message_management">
+    <div id="base">
+      <main class="message-page">
+        <section class="message-panel" aria-label="消息管理">
+          <div class="filter-row">
+            <label class="date-range" aria-label="时间范围">
+              <span class="calendar-icon">□</span>
+              <input id="startTime" type="text" placeholder="开始时间" />
+              <span>-</span>
+              <input id="endTime" type="text" placeholder="结束时间" />
+            </label>
+
+            <label class="field">
+              <span>消息类型:</span>
+              <select id="messageType">
+                <option value="">请选择消息类型</option>
+                <option value="平台公告">平台公告</option>
+                <option value="通知">通知</option>
+                <option value="短信">短信</option>
+                <option value="风控弹窗">风控弹窗</option>
+                <option value="系统消息">系统消息</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>消息状态:</span>
+              <select id="messageStatus">
+                <option value="">请选择消息状态</option>
+                <option value="待发送">待发送</option>
+                <option value="已发送">已发送</option>
+              </select>
+            </label>
+
+            <label class="field title-field">
+              <span>标题:</span>
+              <input id="messageTitle" type="text" placeholder="请输入标题" />
+            </label>
+
+            <button class="btn primary" type="button" id="searchBtn">搜索</button>
+            <button class="btn ghost" type="button" id="resetBtn">重置</button>
+            <button class="btn primary" type="button" id="addBtn">新增</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="col-id">Id</th>
+                  <th>消息类型</th>
+                  <th>标题</th>
+                  <th>提醒商户</th>
+                  <th>发送时间</th>
+                  <th>结束时间</th>
+                  <th>状态</th>
+                  <th>操作人</th>
+                  <th>操作时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="messageBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="dialog-layer is-hidden" id="messageDialog" aria-label="新增消息">
+          <div class="dialog-mask"></div>
+          <form class="dialog-card" id="messageForm">
+            <header class="dialog-header">
+              <h1 id="dialogTitle">新增</h1>
+              <button class="close-btn" type="button" id="closeDialog" aria-label="关闭">×</button>
+            </header>
+            <div class="dialog-body">
+              <label class="form-row compact">
+                <span><i>*</i>消息类型</span>
+                <select id="formType" required>
+                  <option value="">请选择消息类型</option>
+                  <option value="平台公告">平台公告</option>
+                  <option value="通知">通知</option>
+                  <option value="短信">短信</option>
+                  <option value="风控弹窗">风控弹窗</option>
+                  <option value="系统消息">系统消息</option>
+                </select>
+              </label>
+              <div class="form-row recipient-block">
+                <span><i>*</i>收件人:</span>
+                <div class="recipient-panel">
+                  <label class="recipient-option">
+                    <input id="recipientAll" name="recipientType" type="radio" value="all" checked />
+                    <span>全部商户</span>
+                  </label>
+                  <label class="recipient-option recipient-option-stack">
+                    <div class="recipient-inline">
+                      <input id="recipientSpecific" name="recipientType" type="radio" value="specific" />
+                      <span>指定账号</span>
+                    </div>
+                    <textarea id="recipientAccounts" placeholder="多个商户账号请用逗号隔开" disabled></textarea>
+                  </label>
+                </div>
+              </div>
+              <label class="form-row wide">
+                <span><i>*</i>标题:</span>
+                <input id="formTitle" type="text" placeholder="请输入标题" required />
+              </label>
+              <label class="form-row wide textarea-row">
+                <span><i>*</i>显示内容:</span>
+                <textarea id="formContent" placeholder="请输入内容" required></textarea>
+              </label>
+              <label class="form-row compact">
+                <span><i>*</i>弹出频次:</span>
+                <select id="formFrequency" required>
+                  <option value="">请选择</option>
+                  <option value="不弹窗">不弹窗</option>
+                  <option value="只弹一次">只弹一次</option>
+                  <option value="每次登录">每次登录</option>
+                </select>
+              </label>
+              <label class="form-row compact">
+                <span><i>*</i>结束时间:</span>
+                <input id="formEndTime" type="text" placeholder="请选择结束时间" required />
+              </label>
+            </div>
+            <footer class="dialog-footer">
+              <button class="btn ghost large" type="button" id="cancelBtn">取消</button>
+              <button class="btn primary large" type="submit" id="submitBtn">提交</button>
+            </footer>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/message-management.js"></script>
+  </body>
+</html>
