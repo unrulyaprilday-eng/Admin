@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>逾期商户</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/overdue-merchants.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/逾期商户/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="overdue_merchants">
+    <div id="base">
+      <main class="page-shell">
+        <section class="table-panel" aria-label="逾期商户列表">
+          <div class="filter-row">
+            <div class="field inline-field">
+              <label for="filterMerchantId">商户ID:</label>
+              <input id="filterMerchantId" type="text" placeholder="请输入商户ID" />
+            </div>
+            <div class="field inline-field">
+              <label for="filterMerchantName">商户名称:</label>
+              <input id="filterMerchantName" type="text" placeholder="请输入商户名称" />
+            </div>
+            <div class="field inline-field compact-field">
+              <label for="filterMinDays">逾期天数:</label>
+              <input id="filterMinDays" type="number" min="0" placeholder="最小" />
+              <span class="range-separator">至</span>
+              <input id="filterMaxDays" type="number" min="0" placeholder="最大" />
+            </div>
+            <div class="field inline-field">
+              <label for="filterSiteStatus">站点状态:</label>
+              <select id="filterSiteStatus">
+                <option value="">全部</option>
+              </select>
+            </div>
+            <button class="btn" id="searchBtn" type="button">搜索</button>
+            <button class="btn secondary" id="resetBtn" type="button">重置</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="id-col">商户ID</th>
+                  <th class="name-col">商户名称</th>
+                  <th class="money-col">欠费额度</th>
+                  <th class="days-col">逾期天数</th>
+                  <th class="time-col">上次充值时间</th>
+                  <th class="status-col">站点状态</th>
+                  <th class="action-col">操作</th>
+                </tr>
+              </thead>
+              <tbody id="overdueMerchantBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="status-panel is-hidden" id="statusPanel" aria-label="站点状态操作">
+          <div class="modal-mask" id="modalMask"></div>
+          <div class="modal-card">
+            <div class="modal-header">
+              <strong id="modalTitle">调整站点状态</strong>
+              <button class="link-btn" id="closeStatusBtn" type="button">关闭</button>
+            </div>
+            <div class="modal-body">
+              <div class="field">
+                <label for="siteStatusSelect">站点状态</label>
+                <select id="siteStatusSelect"></select>
+              </div>
+              <p class="status-desc" id="siteStatusDesc"></p>
+              <div class="modal-actions">
+                <button class="btn secondary" id="cancelStatusBtn" type="button">取消</button>
+                <button class="btn" id="confirmStatusBtn" type="button">确认</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="custom/js/overdue-merchants.js"></script>
+  </body>
+</html>

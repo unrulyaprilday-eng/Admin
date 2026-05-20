@@ -135,6 +135,13 @@ $axure.loadDocument({
             "children": []
           },
           {
+            "id": "overdue_merchants",
+            "pageName": "逾期商户",
+            "type": "Wireframe",
+            "url": "逾期商户.html",
+            "children": []
+          },
+          {
             "id": "account_change_records",
             "pageName": "账变记录",
             "type": "Wireframe",
@@ -232,6 +239,13 @@ $axure.loadDocument({
             "pageName": "日志管理",
             "type": "Wireframe",
             "url": "日志管理.html",
+            "children": []
+          },
+          {
+            "id": "platform_maintenance",
+            "pageName": "平台维护管理",
+            "type": "Wireframe",
+            "url": "平台维护管理.html",
             "children": []
           }
         ]

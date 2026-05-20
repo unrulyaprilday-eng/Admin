@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f5f6f8;
+  color: #303744;
+  font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.page-shell {
+  min-width: 1280px;
+  padding: 18px 3px;
+}
+
+.table-panel {
+  min-height: 300px;
+  padding-top: 18px;
+  background: #fff;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 12px 12px;
+}
+
+.inline-field {
+  gap: 6px;
+}
+
+.inline-field label {
+  width: auto;
+  color: #303744;
+  white-space: nowrap;
+}
+
+.inline-field input,
+.inline-field select {
+  width: 168px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid #d8dee8;
+  border-radius: 4px;
+  background: #fff;
+  color: #303744;
+  outline: none;
+}
+
+.inline-field select {
+  color: #6b7585;
+}
+
+.inline-field input::placeholder {
+  color: #b5becd;
+}
+
+.inline-field input:focus,
+.inline-field select:focus {
+  border-color: #409eff;
+}
+
+.compact-field input {
+  width: 86px;
+}
+
+.range-separator {
+  color: #8a96a8;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 1280px;
+  border-collapse: collapse;
+  border: 1px solid #e4e8ef;
+  background: #fff;
+}
+
+th,
+td {
+  height: 36px;
+  padding: 0 14px;
+  border-right: 1px solid #e4e8ef;
+  border-bottom: 1px solid #e4e8ef;
+  text-align: center;
+  white-space: nowrap;
+}
+
+th {
+  background: #f3f6fa;
+  color: #7c8798;
+  font-weight: 700;
+}
+
+td {
+  color: #334155;
+}
+
+.id-col {
+  width: 150px;
+}
+
+.name-col,
+.money-col,
+.days-col,
+.status-col {
+  width: 180px;
+}
+
+.time-col {
+  width: 240px;
+}
+
+.action-col {
+  width: 120px;
+}
+
+.money {
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.status.maintenance {
+  background: #fff1f0;
+  color: #cf1322;
+}
+
+.status.forbidden-game {
+  background: #fff7e6;
+  color: #d46b08;
+}
+
+.status.backend-restricted {
+  background: #e6f4ff;
+  color: #0958d9;
+}
+
+.status.warning {
+  background: #fffbe6;
+  color: #ad8b00;
+}
+
+.status.normal {
+  background: #f6ffed;
+  color: #389e0d;
+}
+
+.empty-cell {
+  height: 244px;
+  color: #8a96a8;
+}
+
+.link-btn {
+  border: 0;
+  background: transparent;
+  color: #409eff;
+  font-weight: 600;
+}
+
+.status-panel.is-hidden {
+  display: none;
+}
+
+.modal-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(20, 30, 48, 0.34);
+}
+
+.modal-card {
+  position: fixed;
+  top: 24%;
+  left: 50%;
+  z-index: 1001;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  transform: translateX(-50%);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(20, 30, 48, 0.22);
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 16px;
+  border-bottom: 1px solid #e4e8ef;
+  background: #f7f7f9;
+}
+
+.modal-body {
+  padding: 18px 16px 16px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.field label {
+  width: 72px;
+  color: #303744;
+}
+
+.field select {
+  flex: 1;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid #d8dee8;
+  border-radius: 4px;
+  background: #fff;
+  color: #303744;
+  outline: none;
+}
+
+.field select:focus {
+  border-color: #409eff;
+}
+
+.status-desc {
+  min-height: 40px;
+  margin: 12px 0 0 82px;
+  color: #6b7585;
+  line-height: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.btn {
+  height: 34px;
+  padding: 0 16px;
+  border: 1px solid #409eff;
+  border-radius: 4px;
+  background: #409eff;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn.secondary {
+  border-color: #d8dee8;
+  background: #fff;
+  color: #303744;
+}
+
+@media (max-width: 960px) {
+  .page-shell {
+    min-width: 0;
+    padding: 12px;
+  }
+}
