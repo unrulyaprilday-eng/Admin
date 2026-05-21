@@ -142,8 +142,8 @@
   }
 
   function formatDateTimeValue(date) {
-    return date.getUTCFullYear() + "/"
-      + pad(date.getUTCMonth() + 1) + "/"
+    return date.getUTCFullYear() + "-"
+      + pad(date.getUTCMonth() + 1) + "-"
       + pad(date.getUTCDate()) + "T"
       + pad(date.getUTCHours()) + ":"
       + pad(date.getUTCMinutes());
@@ -179,8 +179,16 @@
       + pad(shifted.getUTCSeconds());
   }
 
+  function formatUtcLabel(offset) {
+    if (offset > 0) return "UTC +" + offset;
+    if (offset < 0) return "UTC " + offset;
+    return "UTC +0";
+  }
+
   function refreshTimezoneCompare() {
     var offset = Number(els.targetTimeZone.value || 0);
+    els.utcBaseLabel.textContent = formatUtcLabel(0);
+    els.targetZoneLabel.textContent = formatUtcLabel(offset);
     var startTarget = parseDateTime(els.start.value);
     var isUnlimited = els.duration.value === "unlimited";
     var durationMs = Number(els.duration.value || 0) * 60 * 1000;
@@ -203,12 +211,10 @@
 
   function refreshSummary() {
     refreshScopeArea();
-    var isImmediate = els.effectMode.value === "立即维护";
-    els.form.classList.toggle("is-immediate", isImmediate);
-    els.start.readOnly = isImmediate;
-    if (isImmediate) {
-      els.start.value = currentTargetTimeValue();
-    }
+    els.effectMode.value = "立即维护";
+    els.form.classList.add("is-immediate");
+    els.start.readOnly = true;
+    els.start.value = currentTargetTimeValue();
     refreshTimezoneCompare();
   }
 
@@ -246,7 +252,7 @@
       ["生效方式", els.effectMode.value],
       ["维护时间", maintenanceTimeText()],
       ["维护时长", els.duration.options[els.duration.selectedIndex].text],
-      ["UTC 0", els.utcBaseTime.textContent]
+      [els.utcBaseLabel.textContent, els.utcBaseTime.textContent]
     ];
     els.confirmSummary.innerHTML = rows.map(function (row) {
       return "<div><dt>" + escapeHtml(row[0]) + "</dt><dd>" + escapeHtml(row[1]) + "</dd></div>";
@@ -291,10 +297,10 @@
     renderMerchantOptions();
     renderSiteMerchantOptions();
     renderSiteOptions();
-    els.effectMode.value = "定时维护";
+    els.effectMode.value = "立即维护";
     els.duration.value = "120";
     els.targetTimeZone.value = "8";
-    els.start.value = "2026-05-20T02:00";
+    els.start.value = currentTargetTimeValue();
     refreshSummary();
   }
 
@@ -410,7 +416,9 @@
       siteOptions: document.getElementById("siteOptions"),
       targetSite: document.getElementById("targetSiteInput"),
       utcBaseTime: document.getElementById("utcBaseTime"),
+      utcBaseLabel: document.getElementById("utcBaseLabel"),
       targetZoneTime: document.getElementById("targetZoneTime"),
+      targetZoneLabel: document.getElementById("targetZoneLabel"),
       recover: document.getElementById("recoverBtn"),
       reset: document.getElementById("resetBtn"),
       dialog: document.getElementById("confirmDialog"),

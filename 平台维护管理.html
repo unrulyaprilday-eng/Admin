@@ -122,10 +122,7 @@
               <div class="form-grid time-form-grid">
                 <label class="form-field">
                   <span>生效方式</span>
-                  <select id="effectMode">
-                    <option value="定时维护">定时维护</option>
-                    <option value="立即维护">立即维护</option>
-                  </select>
+                  <input id="effectMode" type="text" value="立即维护" readonly />
                 </label>
                 <label class="form-field">
                   <span>目标时区</span>
@@ -159,11 +156,11 @@
 
               <section class="timezone-compare" aria-label="时区对比">
                 <div>
-                  <span>UTC 0</span>
+                  <span id="utcBaseLabel">UTC +0</span>
                   <strong id="utcBaseTime">2026/05/19 18:00:00 - 20:00:00</strong>
                 </div>
                 <div>
-                  <span>目标时区</span>
+                  <span id="targetZoneLabel">UTC +8</span>
                   <strong id="targetZoneTime">2026/05/20 02:00:00 - 04:00:00</strong>
                 </div>
               </section>
