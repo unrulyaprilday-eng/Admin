@@ -62,17 +62,13 @@
                 <div class="scope-head">
                   <div>
                     <h3>维护范围</h3>
-                    <p>按全平台、指定商户或指定站点控制维护影响对象。</p>
+                    <p>按指定商户或指定站点控制维护影响对象。</p>
                   </div>
-                  <span id="scopeImpactText">全平台访问</span>
+                  <span id="scopeImpactText">指定商户访问</span>
                 </div>
                 <div class="scope-options" id="scopeOptions">
                   <label class="scope-option is-active">
-                    <input type="radio" name="scopeType" value="平台维护" checked />
-                    <b>全平台</b>
-                  </label>
-                  <label class="scope-option">
-                    <input type="radio" name="scopeType" value="指定商户" />
+                    <input type="radio" name="scopeType" value="指定商户" checked />
                     <b>指定商户</b>
                   </label>
                   <label class="scope-option">
@@ -152,6 +148,7 @@
                     <option value="120" selected>2 小时</option>
                     <option value="240">4 小时</option>
                     <option value="480">8 小时</option>
+                    <option value="unlimited">不限时</option>
                   </select>
                 </label>
                 <label class="form-field">
@@ -163,11 +160,11 @@
               <section class="timezone-compare" aria-label="时区对比">
                 <div>
                   <span>UTC 0</span>
-                  <strong id="utcBaseTime">2026-05-19 18:00:00 - 20:00:00</strong>
+                  <strong id="utcBaseTime">2026/05/19 18:00:00 - 20:00:00</strong>
                 </div>
                 <div>
                   <span>目标时区</span>
-                  <strong id="targetZoneTime">2026-05-20 02:00:00 - 04:00:00</strong>
+                  <strong id="targetZoneTime">2026/05/20 02:00:00 - 04:00:00</strong>
                 </div>
               </section>
 

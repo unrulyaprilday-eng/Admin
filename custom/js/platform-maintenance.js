@@ -12,6 +12,8 @@
   var selectedMerchants = [];
   var selectedSiteMerchant = "";
   var selectedSites = [];
+  var ALL_MERCHANTS = "__ALL_MERCHANTS__";
+  var ALL_SITES = "__ALL_SITES__";
   var pendingAction = "";
   var els = {};
 
@@ -25,7 +27,7 @@
 
   function currentScope() {
     var checked = document.querySelector("input[name='scopeType']:checked");
-    return checked ? checked.value : "平台维护";
+    return checked ? checked.value : "指定商户";
   }
 
   function merchantLabel(merchant) {
@@ -39,7 +41,11 @@
         || merchant.id.toLowerCase().indexOf(keyword) > -1
         || merchant.name.toLowerCase().indexOf(keyword) > -1;
     });
-    els.merchantOptions.innerHTML = list.length
+    els.merchantOptions.innerHTML = "<label class=\"merchant-option\">"
+      + "<input type=\"checkbox\" value=\"" + ALL_MERCHANTS + "\"" + (selectedMerchants.indexOf(ALL_MERCHANTS) > -1 ? " checked" : "") + " />"
+      + "<span>所有商户 <small>ALL</small></span>"
+      + "</label>"
+      + (list.length
       ? list.map(function (merchant) {
         var checked = selectedMerchants.indexOf(merchant.id) > -1 ? " checked" : "";
         return "<label class=\"merchant-option\">"
@@ -47,7 +53,7 @@
           + "<span>" + escapeHtml(merchant.name) + " <small>" + escapeHtml(merchant.id) + "</small></span>"
           + "</label>";
       }).join("")
-      : "<div class=\"merchant-option\">暂无匹配商户</div>";
+      : "<div class=\"merchant-option\">暂无匹配商户</div>");
   }
 
   function renderSiteMerchantOptions() {
@@ -69,6 +75,11 @@
   }
 
   function syncMerchantTarget() {
+    if (selectedMerchants.indexOf(ALL_MERCHANTS) > -1) {
+      els.targetMerchant.value = "所有商户";
+      els.merchantPickerText.textContent = "已选择所有商户";
+      return;
+    }
     var selected = merchants.filter(function (merchant) {
       return selectedMerchants.indexOf(merchant.id) > -1;
     });
@@ -91,14 +102,18 @@
       return;
     }
     els.siteMerchantPickerText.textContent = merchant.name + " " + merchant.id;
-    els.siteOptions.innerHTML = merchant.sites.map(function (site) {
+    els.siteOptions.innerHTML = "<label class=\"site-option\">"
+      + "<input type=\"checkbox\" value=\"" + ALL_SITES + "\"" + (selectedSites.indexOf(ALL_SITES) > -1 ? " checked" : "") + " />"
+      + "<span>所有站点</span>"
+      + "</label>"
+      + merchant.sites.map(function (site) {
       var checked = selectedSites.indexOf(site) > -1 ? " checked" : "";
       return "<label class=\"site-option\">"
         + "<input type=\"checkbox\" value=\"" + escapeHtml(site) + "\"" + checked + " />"
         + "<span>" + escapeHtml(site) + "</span>"
         + "</label>";
     }).join("");
-    els.targetSite.value = selectedSites.join("，");
+    els.targetSite.value = selectedSites.indexOf(ALL_SITES) > -1 ? "所有站点" : selectedSites.join("，");
   }
 
   function refreshScopeArea() {
@@ -127,8 +142,8 @@
   }
 
   function formatDateTimeValue(date) {
-    return date.getUTCFullYear() + "-"
-      + pad(date.getUTCMonth() + 1) + "-"
+    return date.getUTCFullYear() + "/"
+      + pad(date.getUTCMonth() + 1) + "/"
       + pad(date.getUTCDate()) + "T"
       + pad(date.getUTCHours()) + ":"
       + pad(date.getUTCMinutes());
@@ -156,8 +171,8 @@
   function formatInOffset(date, offset) {
     if (!date) return "--";
     var shifted = new Date(date.getTime() + offset * 60 * 60 * 1000);
-    return shifted.getUTCFullYear() + "-"
-      + pad(shifted.getUTCMonth() + 1) + "-"
+    return shifted.getUTCFullYear() + "/"
+      + pad(shifted.getUTCMonth() + 1) + "/"
       + pad(shifted.getUTCDate()) + " "
       + pad(shifted.getUTCHours()) + ":"
       + pad(shifted.getUTCMinutes()) + ":"
@@ -167,10 +182,20 @@
   function refreshTimezoneCompare() {
     var offset = Number(els.targetTimeZone.value || 0);
     var startTarget = parseDateTime(els.start.value);
+    var isUnlimited = els.duration.value === "unlimited";
     var durationMs = Number(els.duration.value || 0) * 60 * 1000;
     var endTarget = startTarget ? new Date(startTarget.getTime() + durationMs) : null;
-    els.end.value = formatLocalDisplay(endTarget);
+    if (isUnlimited) {
+      els.end.value = "不限时";
+    } else {
+      els.end.value = formatLocalDisplay(endTarget);
+    }
     var startUtc = startTarget ? new Date(startTarget.getTime() - offset * 60 * 60 * 1000) : null;
+    if (isUnlimited) {
+      els.utcBaseTime.textContent = formatInOffset(startUtc, 0) + " 起，不限时";
+      els.targetZoneTime.textContent = formatInOffset(startUtc, offset) + " 起，不限时";
+      return;
+    }
     var endUtc = endTarget ? new Date(endTarget.getTime() - offset * 60 * 60 * 1000) : null;
     els.utcBaseTime.textContent = formatInOffset(startUtc, 0) + " - " + formatInOffset(endUtc, 0);
     els.targetZoneTime.textContent = formatInOffset(startUtc, offset) + " - " + formatInOffset(endUtc, offset);
@@ -189,27 +214,37 @@
 
   function scopeDesc() {
     var scope = currentScope();
-    if (scope === "平台维护") return "全平台访问";
     if (scope === "指定商户") {
+      if (selectedMerchants.indexOf(ALL_MERCHANTS) > -1) return "所有商户访问";
       return selectedMerchants.length ? selectedMerchants.length + " 个指定商户访问" : "指定商户访问";
     }
+    if (selectedSites.indexOf(ALL_SITES) > -1) return "所有站点访问";
     if (selectedSites.length) return selectedSites.length + " 个指定站点访问";
     return "指定站点访问";
   }
 
   function selectedTargetText() {
     var scope = currentScope();
-    if (scope === "平台维护") return "全平台";
     if (scope === "指定商户") return els.targetMerchant.value.trim() || "未选择商户";
     return els.targetSite.value.trim() || "未选择站点";
   }
 
-  function setConfirmSummary() {
-    var rows = [
+  function maintenanceTimeText() {
+    var startText = formatLocalDisplay(parseDateTime(els.start.value));
+    if (els.duration.value === "unlimited") return startText + " 起，不限时";
+    return startText + " 至 " + (els.end.value || "--");
+  }
+
+  function setConfirmSummary(action) {
+    var rows = action === "recover" ? [
+      ["恢复范围", scopeDesc()],
+      ["目标对象", selectedTargetText()],
+      ["恢复结果", "立即恢复访问"]
+    ] : [
       ["维护范围", scopeDesc()],
       ["目标对象", selectedTargetText()],
       ["生效方式", els.effectMode.value],
-      ["维护时间", formatLocalDisplay(parseDateTime(els.start.value)) + " 至 " + (els.end.value || "--")],
+      ["维护时间", maintenanceTimeText()],
       ["维护时长", els.duration.options[els.duration.selectedIndex].text],
       ["UTC 0", els.utcBaseTime.textContent]
     ];
@@ -220,7 +255,7 @@
 
   function openDialog(action) {
     pendingAction = action;
-    setConfirmSummary();
+    setConfirmSummary(action);
     if (action === "recover") {
       els.dialogTitle.textContent = "确认一键恢复";
       els.dialogContent.textContent = "确认恢复后，当前维护范围将立即恢复访问。";
@@ -279,6 +314,16 @@
     els.merchantSearch.addEventListener("input", renderMerchantOptions);
     els.merchantOptions.addEventListener("change", function (event) {
       if (event.target.type !== "checkbox") return;
+      if (event.target.value === ALL_MERCHANTS) {
+        selectedMerchants = event.target.checked ? [ALL_MERCHANTS] : [];
+        renderMerchantOptions();
+        syncMerchantTarget();
+        refreshSummary();
+        return;
+      }
+      selectedMerchants = selectedMerchants.filter(function (id) {
+        return id !== ALL_MERCHANTS;
+      });
       if (event.target.checked && selectedMerchants.indexOf(event.target.value) === -1) {
         selectedMerchants.push(event.target.value);
       }
@@ -287,6 +332,7 @@
           return id !== event.target.value;
         });
       }
+      renderMerchantOptions();
       syncMerchantTarget();
       refreshSummary();
     });
@@ -306,6 +352,15 @@
     });
     els.siteOptions.addEventListener("change", function (event) {
       if (event.target.type !== "checkbox") return;
+      if (event.target.value === ALL_SITES) {
+        selectedSites = event.target.checked ? [ALL_SITES] : [];
+        renderSiteOptions();
+        refreshSummary();
+        return;
+      }
+      selectedSites = selectedSites.filter(function (site) {
+        return site !== ALL_SITES;
+      });
       if (event.target.checked && selectedSites.indexOf(event.target.value) === -1) {
         selectedSites.push(event.target.value);
       }
