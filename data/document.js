@@ -33,6 +33,13 @@ $axure.loadDocument({
             "url": "商户列表.html"
           },
           {
+            "id": "merchant_site_list",
+            "pageName": "站点列表",
+            "type": "Wireframe",
+            "url": "站点列表.html",
+            "children": []
+          },
+          {
             "id": "hzsntc",
             "pageName": "新增商户",
             "type": "Wireframe",

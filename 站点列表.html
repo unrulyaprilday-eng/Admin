@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>站点列表</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/site-list.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/站点列表/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body data-axure-page-id="merchant_site_list">
+    <div id="base">
+      <main class="site-page">
+        <header class="page-head">
+          <div>
+            <h1>站点列表</h1>
+            <p>按商户管理站点开通状态和维护窗口。</p>
+          </div>
+          <button class="btn btn-secondary" id="exportBtn" type="button">导出</button>
+        </header>
+
+        <section class="filter-panel" aria-label="站点筛选">
+          <label>
+            <span>站点名称</span>
+            <input id="siteNameFilter" type="search" placeholder="请输入站点名称" />
+          </label>
+          <label>
+            <span>商户编号</span>
+            <input id="merchantIdFilter" type="search" placeholder="请输入商户编号" />
+          </label>
+          <label>
+            <span>商户名称</span>
+            <input id="merchantNameFilter" type="search" placeholder="请输入商户名称" />
+          </label>
+          <label>
+            <span>站点状态</span>
+            <select id="statusFilter">
+              <option value="">全部</option>
+              <option value="正常">正常</option>
+              <option value="维护">维护</option>
+              <option value="停用">停用</option>
+            </select>
+          </label>
+          <div class="filter-actions">
+            <button class="btn btn-primary" id="searchBtn" type="button">搜索</button>
+            <button class="btn btn-secondary" id="resetBtn" type="button">重置</button>
+          </div>
+        </section>
+
+        <section class="table-panel" aria-label="站点数据">
+          <div class="table-toolbar">
+            <strong>站点明细</strong>
+            <span id="resultSummary">共 0 条</span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="col-id">商户编号</th>
+                  <th class="col-name">商户名称</th>
+                  <th class="col-site">站点名称</th>
+                  <th class="col-domain">站点域名</th>
+                  <th class="col-time">开通时间</th>
+                  <th class="col-time">维护窗口</th>
+                  <th class="col-status">站点状态</th>
+                  <th class="col-time">更新时间</th>
+                  <th class="col-action">操作</th>
+                </tr>
+              </thead>
+              <tbody id="siteTableBody"></tbody>
+            </table>
+          </div>
+          <footer class="pagination">
+            <span id="pageSummary">第 1 / 1 页</span>
+            <button class="btn btn-secondary" id="prevPageBtn" type="button">上一页</button>
+            <button class="btn btn-secondary" id="nextPageBtn" type="button">下一页</button>
+          </footer>
+        </section>
+      </main>
+
+      <div class="modal-mask" id="statusModal" aria-hidden="true">
+        <section class="status-modal" role="dialog" aria-modal="true" aria-labelledby="statusModalTitle">
+          <header class="modal-head">
+            <div>
+              <h2 id="statusModalTitle">修改站点状态</h2>
+              <p id="modalSiteInfo"></p>
+            </div>
+            <button class="icon-close" id="closeModalBtn" type="button" aria-label="关闭">×</button>
+          </header>
+          <div class="modal-body">
+            <label>
+              <span>调整后状态</span>
+              <select id="modalStatus">
+                <option value="正常">正常</option>
+                <option value="维护">维护</option>
+                <option value="停用">停用</option>
+              </select>
+            </label>
+            <label>
+              <span>维护窗口</span>
+              <input id="modalWindow" type="text" placeholder="如 02:00-04:00" />
+            </label>
+            <label>
+              <span>调整备注</span>
+              <textarea id="modalRemark" rows="3" placeholder="请输入本次状态调整原因"></textarea>
+            </label>
+            <p class="modal-note">状态调整仅影响当前站点，不影响同商户下其他站点。</p>
+          </div>
+          <footer class="modal-foot">
+            <button class="btn btn-secondary" id="cancelModalBtn" type="button">取消</button>
+            <button class="btn btn-primary" id="saveStatusBtn" type="button">确认修改</button>
+          </footer>
+        </section>
+      </div>
+    </div>
+    <script src="custom/js/site-list.js"></script>
+  </body>
+</html>
