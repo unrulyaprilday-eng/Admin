@@ -161,6 +161,20 @@ $axure.loadDocument({
             "type": "Wireframe",
             "url": "商户充值配置.html",
             "children": []
+          },
+          {
+            "id": "recharge_order_list",
+            "pageName": "充值订单列表",
+            "type": "Wireframe",
+            "url": "充值订单列表.html",
+            "children": []
+          },
+          {
+            "id": "collection_order_list",
+            "pageName": "归集订单列表",
+            "type": "Wireframe",
+            "url": "归集订单列表.html",
+            "children": []
           }
         ]
       },

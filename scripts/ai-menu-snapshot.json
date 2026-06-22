@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "savedAt": "2026-06-02T06:22:19.163Z",
+  "source": "data/document.js sitemap.rootNodes",
+  "rootNodes": [
+    {
+      "id": "zaj83g",
+      "pageName": "默认看板",
+      "type": "Wireframe",
+      "url": "默认看板.html"
+    },
+    {
+      "id": "",
+      "pageName": "商户管理",
+      "type": "Folder",
+      "url": "",
+      "children": [
+        {
+          "id": "wb9dak",
+          "pageName": "商户列表",
+          "type": "Wireframe",
+          "url": "商户列表.html"
+        },
+        {
+          "id": "merchant_site_list",
+          "pageName": "站点列表",
+          "type": "Wireframe",
+          "url": "站点列表.html",
+          "children": []
+        },
+        {
+          "id": "hzsntc",
+          "pageName": "新增商户",
+          "type": "Wireframe",
+          "url": "新增商户.html"
+        },
+        {
+          "id": "7200bj",
+          "pageName": "支付IP管理",
+          "type": "Wireframe",
+          "url": "支付ip管理.html"
+        },
+        {
+          "id": "vhboo6",
+          "pageName": "站点配用设置",
+          "type": "Wireframe",
+          "url": "站点配用设置.html"
+        },
+        {
+          "id": "z14uq2",
+          "pageName": "编辑商户",
+          "type": "Wireframe",
+          "url": "编辑商户.html",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "",
+      "pageName": "游戏管理",
+      "type": "Folder",
+      "url": "",
+      "children": [
+        {
+          "id": "ea0g43",
+          "pageName": "游戏类型管理",
+          "type": "Wireframe",
+          "url": "游戏类型管理.html"
+        },
+        {
+          "id": "5m0qsa",
+          "pageName": "供应商管理",
+          "type": "Wireframe",
+          "url": "供应商管理.html"
+        },
+        {
+          "id": "rdh9c3",
+          "pageName": "游戏厂商管理",
+          "type": "Wireframe",
+          "url": "游戏厂商管理.html"
+        },
+        {
+          "id": "cw22zn",
+          "pageName": "游戏列表",
+          "type": "Wireframe",
+          "url": "游戏列表.html"
+        }
+      ]
+    },
+    {
+      "id": "",
+      "pageName": "财务中心",
+      "type": "Folder",
+      "url": "",
+      "children": [
+        {
+          "id": "v4zbng",
+          "pageName": "归集收款地址配置",
+          "type": "Wireframe",
+          "url": "归集收款地址配置.html"
+        },
+        {
+          "id": "o491fv",
+          "pageName": "商户地址列表",
+          "type": "Wireframe",
+          "url": "商户地址列表.html"
+        },
+        {
+          "id": "ego87e",
+          "pageName": "人工加扣款",
+          "type": "Wireframe",
+          "url": "人工加扣款.html"
+        },
+        {
+          "id": "game_vendor_reconciliation",
+          "pageName": "游戏厂商对账表",
+          "type": "Wireframe",
+          "url": "游戏厂商对账表.html"
+        },
+        {
+          "id": "platform_income_overview",
+          "pageName": "平台收入",
+          "type": "Wireframe",
+          "url": "平台收入.html"
+        },
+        {
+          "id": "merchant_bill_audit",
+          "pageName": "商户账单稽核",
+          "type": "Wireframe",
+          "url": "商户账单稽核.html",
+          "children": []
+        },
+        {
+          "id": "overdue_merchants",
+          "pageName": "逾期商户",
+          "type": "Wireframe",
+          "url": "逾期商户.html",
+          "children": []
+        },
+        {
+          "id": "account_change_records",
+          "pageName": "账变记录",
+          "type": "Wireframe",
+          "url": "账变记录.html",
+          "children": []
+        },
+        {
+          "id": "merchant_recharge_config",
+          "pageName": "商户充值配置",
+          "type": "Wireframe",
+          "url": "商户充值配置.html",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "data_center",
+      "pageName": "数据中心",
+      "type": "Folder",
+      "url": "",
+      "children": [
+        {
+          "id": "merchant_data",
+          "pageName": "商户数据",
+          "type": "Wireframe",
+          "url": "商户数据.html"
+        },
+        {
+          "id": "merchant_data_summary",
+          "pageName": "商户数据汇总",
+          "type": "Wireframe",
+          "url": "商户数据汇总.html"
+        },
+        {
+          "id": "merchant_ranking",
+          "pageName": "商户排行",
+          "type": "Wireframe",
+          "url": "商户排行.html"
+        },
+        {
+          "id": "game_vendor_statistics",
+          "pageName": "游戏厂商统计",
+          "type": "Wireframe",
+          "url": "游戏厂商统计.html"
+        },
+        {
+          "id": "game_statistics",
+          "pageName": "游戏统计",
+          "type": "Wireframe",
+          "url": "游戏统计.html"
+        }
+      ]
+    },
+    {
+      "id": "",
+      "pageName": "人事管理",
+      "type": "Folder",
+      "url": "",
+      "children": [
+        {
+          "id": "3ynxdj",
+          "pageName": "总台人事列表",
+          "type": "Wireframe",
+          "url": "总台人事列表.html"
+        },
+        {
+          "id": "rn0sdm",
+          "pageName": "商户人事列表",
+          "type": "Wireframe",
+          "url": "商户人事列表.html"
+        }
+      ]
+    },
+    {
+      "id": "",
+      "pageName": "平台设置",
+      "type": "Folder",
+      "url": "",
+      "children": [
+        {
+          "id": "u4feeb",
+          "pageName": "页面管理",
+          "type": "Wireframe",
+          "url": "页面管理.html"
+        },
+        {
+          "id": "currency_settings",
+          "pageName": "币种设置",
+          "type": "Wireframe",
+          "url": "币种设置.html",
+          "children": []
+        },
+        {
+          "id": "log_management",
+          "pageName": "日志管理",
+          "type": "Wireframe",
+          "url": "日志管理.html",
+          "children": []
+        },
+        {
+          "id": "platform_maintenance",
+          "pageName": "平台维护管理",
+          "type": "Wireframe",
+          "url": "平台维护管理.html",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "message_center",
+      "pageName": "消息中心",
+      "type": "Folder",
+      "url": "",
+      "children": [
+        {
+          "id": "message_management",
+          "pageName": "消息管理",
+          "type": "Wireframe",
+          "url": "消息管理.html",
+          "children": []
+        },
+        {
+          "id": "member_complaints",
+          "pageName": "会员投诉列表",
+          "type": "Wireframe",
+          "url": "会员投诉列表.html",
+          "children": []
+        },
+        {
+          "id": "platform_suggestions",
+          "pageName": "平台建议",
+          "type": "Wireframe",
+          "url": "平台建议.html",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

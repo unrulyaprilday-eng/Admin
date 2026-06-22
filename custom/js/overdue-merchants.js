@@ -42,6 +42,14 @@
       siteStatus: "maintenance"
     },
     {
+      merchantId: "M10077",
+      merchantName: "鼎盛国际",
+      overdueAmount: 105640.00,
+      overdueDays: 29,
+      lastRechargeAt: "2026-04-19 12:03:57",
+      siteStatus: "forbidden_game"
+    },
+    {
       merchantId: "M10052",
       merchantName: "蓝海国际",
       overdueAmount: 86420.00,
@@ -74,12 +82,12 @@
       siteStatus: "warning"
     },
     {
-      merchantId: "M10002",
-      merchantName: "极光电竞",
-      overdueAmount: 0,
-      overdueDays: 0,
+      merchantId: "M10004",
+      merchantName: "皇冠体育",
+      overdueAmount: 3680.00,
+      overdueDays: 1,
       lastRechargeAt: "2026-05-18 10:12:46",
-      siteStatus: "normal"
+      siteStatus: "warning"
     }
   ];
   var els = {};
@@ -122,11 +130,11 @@
       return "<tr>"
         + "<td>" + row.merchantId + "</td>"
         + "<td>" + row.merchantName + "</td>"
-        + "<td class=\"money\">" + money(row.overdueAmount) + "</td>"
+        + "<td class=\"money negative\">" + money(row.overdueAmount) + "</td>"
         + "<td>" + row.overdueDays + "</td>"
         + "<td>" + row.lastRechargeAt + "</td>"
         + "<td>" + statusTag(row.siteStatus) + "</td>"
-        + "<td><button class=\"link-btn\" type=\"button\" data-action=\"status\" data-id=\"" + row.merchantId + "\">调整</button></td>"
+        + "<td><button class=\"link-btn\" type=\"button\" data-action=\"status\" data-id=\"" + row.merchantId + "\">调整状态</button></td>"
         + "</tr>";
     }).join("") || "<tr><td colspan=\"7\" class=\"empty-cell\">暂无数据</td></tr>";
   }
@@ -158,12 +166,12 @@
     currentMerchantId = row.merchantId;
     els.modalTitle.textContent = "调整站点状态 - " + row.merchantName + "（" + row.merchantId + "）";
     renderStatusOptions(row.siteStatus);
-    els.statusPanel.classList.remove("is-hidden");
+    els.statusPanel.hidden = false;
   }
 
   function closeStatusPanel() {
     currentMerchantId = "";
-    els.statusPanel.classList.add("is-hidden");
+    els.statusPanel.hidden = true;
   }
 
   function confirmStatus() {
@@ -197,6 +205,34 @@
     render();
   }
 
+  function exportCsv() {
+    var header = ["商户ID", "商户名称", "欠费额度", "逾期天数", "上次充值时间", "站点状态"];
+    var lines = filteredRows().map(function (row) {
+      return [
+        row.merchantId,
+        row.merchantName,
+        money(row.overdueAmount),
+        row.overdueDays,
+        row.lastRechargeAt,
+        statusMeta(row.siteStatus).label
+      ];
+    });
+    var csv = [header].concat(lines).map(function (line) {
+      return line.map(function (value) {
+        return "\"" + String(value).replace(/"/g, "\"\"") + "\"";
+      }).join(",");
+    }).join("\n");
+    var blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "逾期商户.csv";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
   function bind() {
     els.searchBtn.addEventListener("click", function () {
       readFilters();
@@ -204,6 +240,7 @@
     });
 
     els.resetBtn.addEventListener("click", resetFilters);
+    els.exportBtn.addEventListener("click", exportCsv);
 
     els.body.addEventListener("click", function (event) {
       var action = event.target.getAttribute("data-action");
@@ -226,6 +263,7 @@
       filterSiteStatus: document.getElementById("filterSiteStatus"),
       searchBtn: document.getElementById("searchBtn"),
       resetBtn: document.getElementById("resetBtn"),
+      exportBtn: document.getElementById("exportBtn"),
       body: document.getElementById("overdueMerchantBody"),
       statusPanel: document.getElementById("statusPanel"),
       modalTitle: document.getElementById("modalTitle"),
@@ -235,6 +273,7 @@
       cancelStatusBtn: document.getElementById("cancelStatusBtn"),
       confirmStatusBtn: document.getElementById("confirmStatusBtn")
     };
+    if (!els.body || !els.filterSiteStatus || !els.statusPanel || !els.statusSelect || !els.exportBtn) return;
     renderFilterStatusOptions();
     bind();
     render();

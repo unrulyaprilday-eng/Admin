@@ -26,15 +26,48 @@ button {
   cursor: pointer;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .page-shell {
   min-width: 1280px;
-  padding: 18px 3px;
+  padding: 18px 0;
+}
+
+.toolbar-panel,
+.table-panel {
+  background: #fff;
+}
+
+.toolbar-panel {
+  margin-bottom: 12px;
+  padding: 18px 20px;
+}
+
+.toolbar-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-title {
+  margin: 0;
+  color: #1f2937;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.page-note {
+  margin: 8px 0 0;
+  color: #6b7585;
+  line-height: 20px;
 }
 
 .table-panel {
   min-height: 300px;
   padding-top: 18px;
-  background: #fff;
 }
 
 .filter-row {
@@ -136,11 +169,16 @@ td {
 }
 
 .action-col {
-  width: 120px;
+  width: 150px;
 }
 
 .money {
   font-variant-numeric: tabular-nums;
+}
+
+.money.negative {
+  color: #cf1322;
+  font-weight: 600;
 }
 
 .status {
@@ -191,10 +229,6 @@ td {
   font-weight: 600;
 }
 
-.status-panel.is-hidden {
-  display: none;
-}
-
 .modal-mask {
   position: fixed;
   inset: 0;
@@ -228,6 +262,22 @@ td {
 
 .modal-body {
   padding: 18px 16px 16px;
+}
+
+.icon-btn {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #7c8798;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.icon-btn:hover {
+  background: #eef2f7;
 }
 
 .field {
@@ -291,5 +341,10 @@ td {
   .page-shell {
     min-width: 0;
     padding: 12px;
+  }
+
+  .toolbar-main {
+    flex-direction: column;
+    align-items: stretch;
   }
 }

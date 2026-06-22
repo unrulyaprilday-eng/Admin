@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
     <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="files/逾期商户/styles.css" type="text/css" rel="stylesheet" />
     <link href="custom/css/overdue-merchants.css" type="text/css" rel="stylesheet" />
     <script src="resources/scripts/jquery-3.7.1.min.js"></script>
     <script src="resources/scripts/axure/axQuery.js"></script>
@@ -40,6 +41,8 @@
     <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
     <script src="data/document.js"></script>
     <script src="files/逾期商户/data.js"></script>
+    <script src="custom/js/axure-custom-page-ready.js"></script>
+    <script src="resources/scripts/axure/ios.js"></script>
     <script type="text/javascript">
       $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
@@ -49,6 +52,15 @@
   <body data-axure-page-id="overdue_merchants">
     <div id="base">
       <main class="page-shell">
+        <section class="toolbar-panel" aria-label="页面说明">
+          <div class="toolbar-main">
+            <div>
+              <h1 class="page-title">逾期商户</h1>
+              <p class="page-note">用于跟进欠费商户处理进度，聚合欠费金额、逾期天数、最近充值时间与站点限制状态。</p>
+            </div>
+            <button class="btn secondary" id="exportBtn" type="button">导出表格</button>
+          </div>
+        </section>
         <section class="table-panel" aria-label="逾期商户列表">
           <div class="filter-row">
             <div class="field inline-field">
@@ -92,12 +104,12 @@
           </div>
         </section>
 
-        <section class="status-panel is-hidden" id="statusPanel" aria-label="站点状态操作">
+        <section class="status-panel" id="statusPanel" aria-label="站点状态操作" hidden>
           <div class="modal-mask" id="modalMask"></div>
           <div class="modal-card">
             <div class="modal-header">
               <strong id="modalTitle">调整站点状态</strong>
-              <button class="link-btn" id="closeStatusBtn" type="button">关闭</button>
+              <button class="icon-btn" id="closeStatusBtn" type="button" aria-label="关闭">×</button>
             </div>
             <div class="modal-body">
               <div class="field">

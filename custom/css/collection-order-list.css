@@ -1,0 +1,309 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --line: #e3e8f0;
+  --line-dark: #d8dee8;
+  --text: #334155;
+  --muted: #8a97a8;
+  --blue: #409eff;
+  --blue-soft: #eef6ff;
+  --orange: #f08a24;
+  --green: #1aa56b;
+  --amber: #d88917;
+  --red: #eb5757;
+  --shadow: 0 10px 24px rgba(34, 59, 94, 0.06);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.collection-order-page {
+  min-width: 1660px;
+  padding: 16px;
+}
+
+.toolbar-panel,
+.table-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.toolbar-panel {
+  margin-bottom: 14px;
+  padding: 16px 18px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.field label {
+  color: #303744;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  height: 34px;
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  background: #fff;
+  color: #303744;
+  outline: none;
+}
+
+.field input {
+  padding: 0 10px;
+}
+
+.field select {
+  padding: 0 30px 0 10px;
+}
+
+.field input::placeholder,
+.field select {
+  color: #a8b2c0;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #7bb8ff;
+  box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.14);
+}
+
+.date-range input {
+  width: 152px;
+}
+
+.query-field select {
+  width: 108px;
+}
+
+.query-field input {
+  width: 172px;
+}
+
+.field > input#chainTradeId {
+  width: 200px;
+}
+
+.amount-range input {
+  width: 132px;
+}
+
+.short select {
+  width: 164px;
+}
+
+.sep {
+  color: var(--muted);
+}
+
+.action-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.btn {
+  height: 34px;
+  min-width: 60px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn.secondary {
+  border-color: var(--line-dark);
+  background: #fff;
+  color: #303744;
+}
+
+.btn.export {
+  background: var(--orange);
+  color: #fff;
+}
+
+.table-panel {
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 1580px;
+  border-collapse: collapse;
+  border-left: 1px solid var(--line);
+}
+
+th,
+td {
+  height: 46px;
+  padding: 0 10px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+th {
+  background: #f7f8fa;
+  color: #5c6677;
+  font-weight: 700;
+}
+
+tbody tr:hover {
+  background: #fbfdff;
+}
+
+.money,
+.fee {
+  font-variant-numeric: tabular-nums;
+}
+
+.money {
+  color: #2468f2;
+  font-weight: 700;
+}
+
+.fee {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.address-cell {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #64748b;
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 13px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-tag.success {
+  background: #ebf8f2;
+  color: var(--green);
+}
+
+.status-tag.processing {
+  background: #fff7e8;
+  color: var(--amber);
+}
+
+.status-tag.failed {
+  background: #fff0f0;
+  color: var(--red);
+}
+
+.table-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fff;
+}
+
+.table-summary {
+  color: #4b5565;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-btn {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  background: #fff;
+  color: #4b5565;
+}
+
+.page-btn.active {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@media (max-width: 1280px) {
+  .collection-order-page {
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .action-row {
+    margin-left: 0;
+  }
+}

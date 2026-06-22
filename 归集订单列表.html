@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>归集订单列表</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet" />
+    <link href="data/styles.css" type="text/css" rel="stylesheet" />
+    <link href="files/归集订单列表/styles.css" type="text/css" rel="stylesheet" />
+    <link href="custom/css/collection-order-list.css" type="text/css" rel="stylesheet" />
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/归集订单列表/data.js"></script>
+    <script src="custom/js/axure-custom-page-ready.js"></script>
+    <script src="resources/scripts/axure/ios.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return "resources/images/transparent.gif"; };
+      $axure.utils.getOtherPath = function() { return "resources/Other.html"; };
+      $axure.utils.getReloadPath = function() { return "resources/reload.html"; };
+    </script>
+  </head>
+  <body data-axure-page-id="collection_order_list">
+    <div id="base">
+      <main class="collection-order-page">
+        <section class="toolbar-panel" aria-label="归集订单筛选">
+          <div class="filter-row">
+            <div class="field date-range">
+              <label for="startTime">开始时间</label>
+              <input id="startTime" type="date" value="2026-06-01" />
+              <span class="sep">-</span>
+              <input id="endTime" type="date" value="2026-06-22" />
+            </div>
+            <div class="field query-field">
+              <select id="merchantType">
+                <option value="merchantAccount">商户账号</option>
+                <option value="merchantId">商户ID</option>
+                <option value="merchantName">商户名称</option>
+              </select>
+              <input id="merchantKeyword" type="text" placeholder="请输入商户账号" />
+            </div>
+            <div class="field">
+              <label for="chainTradeId">链上的交易ID:</label>
+              <input id="chainTradeId" type="text" placeholder="请输入链上的交易ID" />
+            </div>
+            <div class="field amount-range">
+              <label for="amountMin">金额范围:</label>
+              <input id="amountMin" type="number" min="0" step="0.01" placeholder="请输入最小金额" />
+              <span class="sep">~</span>
+              <input id="amountMax" type="number" min="0" step="0.01" placeholder="请输入最大金额" />
+            </div>
+            <div class="field short">
+              <label for="status">状态:</label>
+              <select id="status">
+                <option value="">请选择状态</option>
+                <option value="success">归集成功</option>
+                <option value="processing">处理中</option>
+                <option value="failed">归集失败</option>
+              </select>
+            </div>
+            <div class="action-row">
+              <button class="btn primary" id="searchBtn" type="button">搜索</button>
+              <button class="btn secondary" id="resetBtn" type="button">重置</button>
+              <button class="btn export" id="exportBtn" type="button">导出</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="table-panel" aria-label="归集订单列表">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>链上的交易ID</th>
+                  <th>商户ID</th>
+                  <th>商户名称</th>
+                  <th>操作时间</th>
+                  <th>归集时间</th>
+                  <th>归集金额</th>
+                  <th>TRX消耗</th>
+                  <th>充币地址</th>
+                  <th>提币地址</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody id="orderBody">
+                <tr>
+                  <td>TRX-9d2ce0f7a3147c001</td>
+                  <td>M10001</td>
+                  <td>星河娱乐城</td>
+                  <td>2026-06-22 09:18:26</td>
+                  <td>2026-06-22 09:22:03</td>
+                  <td class="money">12,800.00</td>
+                  <td class="fee">4.82</td>
+                  <td class="address-cell">TQ9v3mK4aEGp52Kocm8f2a3wTT19Ua1yS</td>
+                  <td class="address-cell">TRo8d7f6c31nB1mK5Yx9P4Qw2Ae7tHkUZ</td>
+                  <td><span class="status-tag success">归集成功</span></td>
+                </tr>
+                <tr>
+                  <td>TRX-b31f7ec202451c002</td>
+                  <td>M10003</td>
+                  <td>极光娱乐</td>
+                  <td>2026-06-22 10:06:15</td>
+                  <td>2026-06-22 10:09:47</td>
+                  <td class="money">45,600.00</td>
+                  <td class="fee">5.11</td>
+                  <td class="address-cell">TF8af89b34ce91d4Npk71QmSxqA2uL8Zf</td>
+                  <td class="address-cell">TH6k28LmN3q0RzVx5P9sDw7Be1JcYt4Qa</td>
+                  <td><span class="status-tag success">归集成功</span></td>
+                </tr>
+                <tr>
+                  <td>TRX-f1aa884520780c003</td>
+                  <td>M10008</td>
+                  <td>银翼国际</td>
+                  <td>2026-06-22 11:23:08</td>
+                  <td>-</td>
+                  <td class="money">8,200.00</td>
+                  <td class="fee">4.56</td>
+                  <td class="address-cell">TQ2h11Mb9f1b6kL0qWv7nE8rXs4YpUaDd</td>
+                  <td class="address-cell">TRq4uH6nD1mX0sK8aP5cVz2Jw7LbYe9Ft</td>
+                  <td><span class="status-tag processing">处理中</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-foot">
+            <div class="table-summary" id="tableSummary">共 3 条归集订单</div>
+            <div class="pager" id="pager"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="custom/js/collection-order-list.js"></script>
+  </body>
+</html>
