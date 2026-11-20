@@ -8,7 +8,7 @@
     { id: "104", name: "Gates of Olympus", type: "slot", art: "olympus" },
     { id: "105", name: "Wild Ape", type: "slot", art: "ape" }
   ];
-  var state = { skin: "rs", resources: {}, logs: {}, filters: { search: "", type: "", status: "" } };
+  var state = { skin: "rs", resources: {}, filters: { search: "", type: "", status: "" } };
   var els = {};
   var draft = null;
   var batch = null;
@@ -61,12 +61,6 @@
           icon: hasIcon ? { names: iconNames.slice(), preview: "custom/assets/game-entry/" + game.art + ".svg" } : null,
           bigIcon: hasBigIcon ? { names: bigIconNames.slice(), preview: "custom/assets/game-entry/" + game.art + ".svg" } : null
         };
-        var latest = status === "complete" ? "更新大图标入口资源：" + bigIconNames.join("、")
-          : (hasIcon ? "移除大图标入口资源：" + bigIconNames.join("、") : hasBigIcon ? "移除小图标入口资源：" + iconNames.join("、") : "移除小图标入口资源及大图标入口资源");
-        state.logs[skin + ":" + game.id] = [
-          { time: "2026-11-20 10:" + String(12 + gameIndex * 7 + skinIndex).padStart(2, "0") + ":00", operator: "资源管理员", action: "编辑入口资源", detail: latest },
-          { time: "2026-11-18 09:" + String(10 + gameIndex * 5 + skinIndex).padStart(2, "0") + ":00", operator: "游戏运营01", action: "批量入口资源导入", detail: "小图标入口资源：" + iconNames.join("、") + "；大图标入口资源：" + bigIconNames.join("、") }
-        ];
       });
     });
   }
@@ -97,10 +91,10 @@
     var resources = skinResources(state.skin);
     els.gameRows.innerHTML = list.length ? list.map(function (game) {
       return '<tr><td><strong>' + escapeHtml(game.name) + '</strong><small>#' + game.id + '</small></td>'
+        + '<td>' + (game.type === "slot" ? "老虎机" : "街机") + '</td>'
         + '<td>' + resourceMarkup(resources[game.id].icon, false) + '</td><td>' + resourceMarkup(resources[game.id].bigIcon, true) + '</td>'
-        + '<td><div class="row-actions"><button class="btn small primary" type="button" data-action="edit" data-game="' + game.id + '">编辑</button>'
-        + '<button class="btn small" type="button" data-action="logs" data-game="' + game.id + '">操作记录</button></div></td></tr>';
-    }).join("") : '<tr><td colspan="4" class="empty-state">暂无符合条件的游戏，请调整筛选条件</td></tr>';
+        + '<td><div class="row-actions"><button class="btn small primary" type="button" data-action="edit" data-game="' + game.id + '">编辑</button></div></td></tr>';
+    }).join("") : '<tr><td colspan="5" class="empty-state">暂无符合条件的游戏，请调整筛选条件</td></tr>';
     els.resultSummary.textContent = "共 " + list.length + " 条 · 当前皮肤：" + state.skin;
   }
 
@@ -169,40 +163,16 @@
     return { names: files.map(function (file) { return file.name; }), preview: preview };
   }
 
-  function addLog(skin, id, action, detail) {
-    var key = skin + ":" + id;
-    if (!state.logs[key]) state.logs[key] = [];
-    var time = new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString().slice(0, 19).replace("T", " ");
-    state.logs[key].unshift({ time: time, operator: "当前管理员", action: action, detail: detail });
-  }
-
-  function resourceDescription(slot, before, after) {
-    var label = slot === "icon" ? "小图标入口资源" : "大图标入口资源";
-    return after ? label + "：" + after.names.join("、") : "移除" + label + "（" + before.names.join("、") + "）";
-  }
-
   function saveDraft(event) {
     event.preventDefault();
     if (!draft) return;
     var existing = skinResources(draft.skin)[draft.id];
     var changed = ["icon", "bigIcon"].filter(function (slot) { return existing[slot] !== draft[slot]; });
     if (!changed.length) { errorMessage("请先选择或调整入口资源。"); return; }
-    var detail = changed.map(function (slot) { return resourceDescription(slot, existing[slot], draft[slot]); }).join("；");
     changed.forEach(function (slot) { existing[slot] = draft[slot]; });
-    addLog(draft.skin, draft.id, "编辑入口资源", detail);
     closeDialog();
     renderGames();
     notify("入口资源已更新");
-  }
-
-  function openLogs(id) {
-    var game = findGame(id);
-    var logs = state.logs[state.skin + ":" + id] || [];
-    els.logContext.textContent = "当前皮肤：" + state.skin + " · #" + id + " · " + game.name;
-    els.logRows.innerHTML = logs.length ? logs.map(function (log) {
-      return '<tr><td>' + escapeHtml(log.time) + '</td><td>' + escapeHtml(log.operator) + '</td><td>' + escapeHtml(log.action) + '</td><td>' + escapeHtml(log.detail) + '</td></tr>';
-    }).join("") : '<tr><td colspan="4" class="empty-state">当前皮肤下暂无该游戏的操作记录</td></tr>';
-    openDialog(els.logDialog);
   }
 
   function normalize(value) {
@@ -294,16 +264,12 @@
     batch.entries.forEach(function (entry) {
       if (entry.error) return;
       var resources = skinResources(entry.skin)[entry.game.id];
-      var detail = [];
       if (entry.iconFiles.length) {
         resources.icon = makeResource(entry.iconFiles);
-        detail.push("小图标入口资源：" + resources.icon.names.join("、"));
       }
       if (entry.bigIconFiles.length) {
         resources.bigIcon = makeResource(entry.bigIconFiles);
-        detail.push("大图标入口资源：" + resources.bigIcon.names.join("、"));
       }
-      addLog(entry.skin, entry.game.id, importMode === "single" ? "入口资源导入" : "批量入口资源导入", detail.join("；"));
       count += 1;
     });
     els.confirmBatch.disabled = true;
@@ -359,7 +325,7 @@
 
   function init() {
     if (initialized || !document.getElementById("entryPage")) return;
-    var ids = ["skinOptions", "filterForm", "gameSearch", "gameTypeFilter", "resourceFilter", "resetFilters", "importEntry", "importFolder", "folderInput", "gameRows", "resultSummary", "editDialog", "editTitle", "editForm", "editGame", "editSkin", "chooseIcon", "removeIcon", "iconInput", "iconSelection", "chooseBigIcon", "removeBigIcon", "bigIconInput", "bigIconSelection", "editError", "batchDialog", "batchTitle", "batchSkinHeader", "selectedImportFolder", "batchSummary", "batchRows", "batchResult", "reselectFolder", "confirmBatch", "logDialog", "logContext", "logRows", "entryToast"];
+    var ids = ["skinOptions", "filterForm", "gameSearch", "gameTypeFilter", "resourceFilter", "resetFilters", "importEntry", "importFolder", "folderInput", "gameRows", "resultSummary", "editDialog", "editTitle", "editForm", "editGame", "editSkin", "chooseIcon", "removeIcon", "iconInput", "iconSelection", "chooseBigIcon", "removeBigIcon", "bigIconInput", "bigIconSelection", "editError", "batchDialog", "batchTitle", "batchSkinHeader", "selectedImportFolder", "batchSummary", "batchRows", "batchResult", "reselectFolder", "confirmBatch", "entryToast"];
     ids.forEach(function (id) { els[id] = document.getElementById(id); });
     if (ids.some(function (id) { return !els[id]; })) return;
     initialized = true;
@@ -389,7 +355,6 @@
       var button = event.target.closest("button[data-action]");
       if (!button || !findGame(button.dataset.game)) return;
       if (button.dataset.action === "edit") openEditor(button.dataset.game);
-      if (button.dataset.action === "logs") openLogs(button.dataset.game);
     });
     els.importEntry.addEventListener("click", function () { openFolderImport("single"); });
     els.importFolder.addEventListener("click", function () { openFolderImport("batch"); });

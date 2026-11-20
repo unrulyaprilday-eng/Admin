@@ -36,9 +36,10 @@ h1, h2, p { margin: 0; }
 .table-scroll { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; text-align: left; }
 .entry-table { table-layout: fixed; min-width: 900px; }
-.game-col { width: 24%; }
-.resource-col { width: 29%; }
-.action-col { width: 18%; }
+.game-col { width: 22%; }
+.type-col { width: 10%; }
+.resource-col { width: 28%; }
+.action-col { width: 12%; }
 th { height: 40px; padding: 10px 14px; background: #f7f8fa; color: #78818e; font-size: 12px; font-weight: 400; }
 td { padding: 15px 14px; border-bottom: 1px solid #edf0f4; vertical-align: middle; line-height: 19px; }
 .entry-table tbody tr { height: 82px; }
@@ -91,10 +92,5 @@ td small { display: block; color: #8a939f; font-size: 11px; line-height: 17px; }
 .status-ready { color: #24966e; }
 .status-error { color: #cf6c49; }
 .batch-result { margin-top: 14px; color: #24966e; }
-.log-context { margin-bottom: 16px; color: #737d89; }
-.log-table th:first-child { width: 165px; }
-.log-table th:nth-child(2) { width: 90px; }
-.log-table th:nth-child(3) { width: 110px; }
-.log-table td { font-size: 12px; overflow-wrap: anywhere; }
 .toast { position: fixed; z-index: 2000; top: 25px; left: 50%; max-width: 85vw; transform: translateX(-50%); padding: 11px 20px; border: 1px solid #cfe7da; border-radius: 5px; background: #f1faf5; color: #29875f; box-shadow: 0 4px 14px rgba(34, 65, 49, .08); }
 @media (max-height: 700px) { .modal-layer { align-items: flex-start; padding-top: 16px; } .dialog-card { max-height: calc(100vh - 32px); } }
