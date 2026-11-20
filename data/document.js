@@ -95,6 +95,12 @@ $axure.loadDocument({
             "pageName": "游戏列表",
             "type": "Wireframe",
             "url": "游戏列表.html"
+          },
+          {
+            "id": "c84b106fb6e8424dbad64f793ec8a520",
+            "pageName": "自研游戏入口文件管理",
+            "type": "Wireframe",
+            "url": "自研游戏入口文件管理.html"
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "savedAt": "2026-06-02T06:22:19.163Z",
+  "savedAt": "2026-11-20T07:50:37.149Z",
   "source": "data/document.js sitemap.rootNodes",
   "rootNodes": [
     {
@@ -84,6 +84,12 @@
           "pageName": "游戏列表",
           "type": "Wireframe",
           "url": "游戏列表.html"
+        },
+        {
+          "id": "c84b106fb6e8424dbad64f793ec8a520",
+          "pageName": "自研游戏入口文件管理",
+          "type": "Wireframe",
+          "url": "自研游戏入口文件管理.html"
         }
       ]
     },
@@ -149,6 +155,20 @@
           "pageName": "商户充值配置",
           "type": "Wireframe",
           "url": "商户充值配置.html",
+          "children": []
+        },
+        {
+          "id": "recharge_order_list",
+          "pageName": "充值订单列表",
+          "type": "Wireframe",
+          "url": "充值订单列表.html",
+          "children": []
+        },
+        {
+          "id": "collection_order_list",
+          "pageName": "归集订单列表",
+          "type": "Wireframe",
+          "url": "归集订单列表.html",
           "children": []
         }
       ]
